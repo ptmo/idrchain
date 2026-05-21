@@ -328,23 +328,23 @@
         </div>
         
         <div class="lang-switcher">
-            <button class="lang-btn" id="lang-toggle">
-                <img id="current-flag" src="https://flagcdn.com/w40/id.png" alt="ID">
-            </button>
-            <div class="lang-dropdown" id="lang-menu">
-                <div class="lang-option" onclick="changeLang('id', 'https://flagcdn.com/w40/id.png')">
-                    <img src="https://flagcdn.com/w40/id.png" alt="ID"> Indonesia
-                </div>
-                <div class="lang-option" onclick="changeLang('en', 'https://flagcdn.com/w40/us.png')">
-                    <img src="https://flagcdn.com/w40/us.png" alt="EN"> English (US)
-                </div>
-                <div class="lang-option" onclick="changeLang('zh', 'https://flagcdn.com/w40/cn.png')">
-                    <img src="https://flagcdn.com/w40/cn.png" alt="ZH"> 中文 (China)
-                </div>
-                <div class="lang-option" onclick="changeLang('ru', 'https://flagcdn.com/w40/ru.png')">
-                    <img src="https://flagcdn.com/w40/ru.png" alt="RU"> Русский
-                </div>
-            </div>
+    <button class="lang-btn" id="lang-toggle">
+        <img id="current-flag" src="img/id.svg" alt="ID">
+    </button>
+    <div class="lang-dropdown" id="lang-menu">
+        <div class="lang-option" onclick="changeLang('id', 'img/id.svg')">
+            <img src="img/id.svg" alt="ID"> Indonesia
+        </div>
+        <div class="lang-option" onclick="changeLang('en', 'img/us.svg')">
+            <img src="img/us.svg" alt="EN"> English (US)
+        </div>
+        <div class="lang-option" onclick="changeLang('zh', 'img/cn.svg')">
+            <img src="img/cn.svg" alt="ZH"> 中文 (China)
+        </div>
+        <div class="lang-option" onclick="changeLang('ru', 'img/ru.svg')">
+            <img src="img/ru.svg" alt="RU"> Русский
+        </div>
+    </div>
         </div>
         <button class="hamburger-btn" id="hamburger-menu">
             <i class="fas fa-bars"></i>
@@ -400,21 +400,21 @@
                 <p data-i18n="arch_desc">Konsep integrasi berlapis (Deep Layer hingga Surface Web) yang menyatukan kenyamanan perbankan dengan kekuatan ledger terdistribusi.</p>
             </div>
             <div class="grid-3">
-                <div class="card reveal delay-100">
-                    <div class="icon">🏦</div>
-                    <h3 data-i18n="arch_c1_t">Banking-First Integration</h3>
-                    <p data-i18n="arch_c1_d">Rakyat tidak dipaksa menggunakan MetaMask, mengelola RPC, membayar gas fee, atau menyimpan seed phrase. Nomor rekening bank dan e-wallet konvensional tetap menjadi pintu akses utama, terhubung langsung via <strong>On-Chain Binding Registry</strong>.</p>
-                </div>
-                <div class="card reveal delay-200">
-                    <div class="icon">🔒</div>
-                    <h3 data-i18n="arch_c2_t">Privacy by Default</h3>
-                    <p data-i18n="arch_c2_d">Informasi pribadi rakyat sipil, PNS, serta akun pribadi pejabat tidak akan diekspos ke public explorer. Data mentah asli disimpan off-chain, menyisakan komitmen kriptografis murni di dalam jaringan.</p>
-                </div>
-                <div class="card reveal delay-300">
-                    <div class="icon">👁️</div>
-                    <h3 data-i18n="arch_c3_t">Transparency by Role</h3>
-                    <p data-i18n="arch_c3_d">Tingkat visibilitas transaksi diatur secara ketat berdasarkan hierarki peran hukum. Dompet jabatan instansi, anggaran dinas, dan entitas korporasi mitra proyek bersifat dapat diaudit secara terbuka sesuai kewenangan untuk diaudit.</p>
-                </div>
+    <div class="card reveal delay-100">
+        <div class="icon"><i class="fas fa-building-columns"></i></div>
+        <h3 data-i18n="arch_c1_t">Banking-First Integration</h3>
+        <p data-i18n="arch_c1_d">Rakyat tidak dipaksa menggunakan MetaMask, mengelola RPC, membayar gas fee, atau menyimpan seed phrase. Nomor rekening bank dan e-wallet konvensional tetap menjadi pintu akses utama, terhubung langsung via <strong>On-Chain Binding Registry</strong>.</p>
+    </div>
+    <div class="card reveal delay-200">
+        <div class="icon"><i class="fas fa-lock"></i></div>
+        <h3 data-i18n="arch_c2_t">Privacy by Default</h3>
+        <p data-i18n="arch_c2_d">Informasi pribadi rakyat sipil, PNS, serta akun pribadi pejabat tidak akan diekspos ke public explorer. Data mentah asli disimpan off-chain, menyisakan komitmen kriptografis murni di dalam jaringan.</p>
+    </div>
+    <div class="card reveal delay-300">
+        <div class="icon"><i class="fas fa-magnifying-glass"></i></div>
+        <h3 data-i18n="arch_c3_t">Transparency by Role</h3>
+        <p data-i18n="arch_c3_d">Tingkat visibilitas transaksi diatur secara ketat berdasarkan hierarki peran hukum. Dompet jabatan instansi, anggaran dinas, dan entitas korporasi mitra proyek bersifat dapat diaudit secara terbuka sesuai kewenangan untuk diaudit.</p>
+    </div>
             </div>
             <div class="account-types reveal delay-200">
                 <h3 data-i18n="acc_title">Klasifikasi Registri Dompet On-Chain</h3>
@@ -682,7 +682,7 @@
         // Muat bahasa tersimpan saat halaman dibuka
         window.onload = () => {
             const savedLang = localStorage.getItem('selectedLang') || 'id';
-            const savedFlag = localStorage.getItem('selectedFlag') || 'https://flagcdn.com/w40/id.png';
+            const savedFlag = localStorage.getItem('selectedFlag') || 'img/id.svg';
             changeLang(savedLang, savedFlag);
         };
 

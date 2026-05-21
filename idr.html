@@ -481,31 +481,32 @@
             color: #475569;
         }
 
-/* CSS Ambient Nebula & Glassmorphism */
-.nebula-glass-card {
+/* CSS Ambient Nebula (Self-Contained) */
+.nebula-card {
     position: relative;
     border-radius: 24px;
-    /* Efek garis tepi kaca tipis dan bayangan dalam */
-    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3), inset 0 0 0 1px rgba(255, 255, 255, 0.15);
+    /* Latar belakang dasar gelap solid agar nebula menyala sempurna tanpa bocor ke luar */
+    background-color: #0f172a; 
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 20px 40px rgba(15, 23, 42, 0.15);
     overflow: hidden;
-    background: rgba(15, 23, 42, 0.2);
 }
 
+/* Elemen warna yang bergerak di dalam card */
 .nebula-glow {
     position: absolute;
     top: -50%;
     left: -50%;
     width: 200%;
     height: 200%;
-    /* Palet Nebula: Percampuran Ungu kosmik, Cyan neon, dan Magenta */
     background: 
-        radial-gradient(circle at 30% 30%, rgba(139, 92, 246, 0.6) 0%, transparent 40%),
-        radial-gradient(circle at 70% 70%, rgba(14, 165, 233, 0.6) 0%, transparent 40%),
-        radial-gradient(circle at 70% 30%, rgba(236, 72, 153, 0.4) 0%, transparent 40%);
-    filter: blur(40px);
-    animation: rotateNebula 20s linear infinite;
+        radial-gradient(circle at 30% 30%, rgba(139, 92, 246, 0.45) 0%, transparent 50%),
+        radial-gradient(circle at 70% 70%, rgba(14, 165, 233, 0.45) 0%, transparent 50%),
+        radial-gradient(circle at 70% 30%, rgba(236, 72, 153, 0.35) 0%, transparent 50%);
+    /* Blur diterapkan hanya pada warna gradasi ini, bukan pada background website */
+    filter: blur(45px);
+    animation: rotateNebula 25s linear infinite;
     z-index: 0;
-    opacity: 0.85;
 }
 
 @keyframes rotateNebula {
@@ -513,34 +514,32 @@
     100% { transform: rotate(360deg); }
 }
 
-.glass-content {
+/* Konten di atas nebula */
+.nebula-content {
     position: relative;
     z-index: 1;
     padding: 3rem;
-    /* Backdrop Kaca (Glassmorphism blur) */
-    background: rgba(15, 23, 42, 0.65); /* Dasar gelap transparan agar teks mudah dibaca */
-    backdrop-filter: blur(24px);
-    -webkit-backdrop-filter: blur(24px);
+    background: transparent; /* Bersih, tanpa efek kaca yang merusak kontras */
 }
 
-.glass-title {
-    color: #38bdf8; /* Biru terang / Cyan */
+.nebula-title {
+    color: #38bdf8;
     font-family: monospace;
     font-size: 0.95rem;
     letter-spacing: 2px;
     text-transform: uppercase;
     margin-bottom: 1rem;
-    text-shadow: 0 0 15px rgba(56, 189, 248, 0.6); /* Efek tulisan bersinar (glow) */
+    text-shadow: 0 0 10px rgba(56, 189, 248, 0.4);
 }
 
-.glass-desc {
+.nebula-desc {
     font-size: 0.95rem;
-    color: #f1f5f9;
+    color: #f8fafc;
     margin-bottom: 2.5rem;
     line-height: 1.7;
 }
 
-.glass-list {
+.nebula-list {
     display: flex;
     flex-direction: column;
     gap: 1.2rem;
@@ -549,22 +548,20 @@
     color: #cbd5e1;
 }
 
-.glass-list div {
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+.nebula-list div {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
     padding-bottom: 0.6rem;
-    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), color 0.3s ease, text-shadow 0.3s ease;
+    transition: transform 0.3s ease, color 0.3s ease;
 }
 
-.glass-list div:last-child {
+.nebula-list div:last-child {
     border-bottom: none;
     padding-bottom: 0;
 }
 
-/* Efek interaktif saat list disorot mouse */
-.glass-list div:hover {
+.nebula-list div:hover {
     color: #ffffff;
-    transform: translateX(8px);
-    text-shadow: 0 0 12px rgba(255, 255, 255, 0.5);
+    transform: translateX(6px);
     border-bottom-color: rgba(255, 255, 255, 0.3);
 }
 
@@ -758,12 +755,12 @@
                     </div>
                 </div>
 
-          <div class="reveal delay-300 nebula-glass-card">
+          <div class="reveal delay-300 nebula-card">
     <div class="nebula-glow"></div>
-    <div class="glass-content">
-        <h4 class="glass-title">// Arsitektur Minimum Viable Jaringan (MVP)</h4>
-        <p class="glass-desc">Ekosistem dasar difokuskan pada pemetaan integrasi inti:</p>
-        <div class="glass-list">
+    <div class="nebula-content">
+        <h4 class="nebula-title">// Arsitektur Minimum Viable Jaringan (MVP)</h4>
+        <p class="nebula-desc">Ekosistem dasar difokuskan pada pemetaan integrasi inti:</p>
+        <div class="nebula-list">
             <div>• Core Permissioned Ledger (QBFT Node)</div>
             <div>• Account Binding Registry Server API</div>
             <div>• Restricted Smart Contract Logic Factory</div>

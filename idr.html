@@ -705,12 +705,43 @@
                 Mewujudkan ekosistem keuangan negara yang bersih dan dapat dipertanggungjawabkan melalui pemanfaatan solusi teknologi mutakhir yang aman, andal, serta tepercaya.
             </div>
             <div class="footer-bottom">
-                © 2026 IDR Chain Initiative. Hak Cipta Dilindungi Undang-Undang.<br>
-                <span style="color: #475569; font-size: 0.8rem; display: block; margin-top: 0.6rem;">Dokumen ini merupakan publikasi konsep teknis akademis awal dan bersifat non-resmi untuk kepentingan simulasi cetak biru infrastruktur nasional.</span>
+    <span id="waktu-sekarang"></span> IDR Chain Initiative. Hak Cipta Dilindungi Undang-Undang.<br>
+    <span style="color: #475569; font-size: 0.8rem; display: block; margin-top: 0.6rem;">Dokumen ini merupakan publikasi konsep teknis akademis awal dan bersifat non-resmi untuk kepentingan simulasi cetak biru infrastruktur nasional.</span>
             </div>
         </div>
   </footer>
+
 <script>
+    function perbaruiWaktu() {
+        const waktu = new Date();
+        
+        // Array nama hari dan bulan dalam Bahasa Indonesia
+        const daftarHari = ['Minggu', 'Senin', 'Selasa', 'Rabu', 'Kamis', 'Jumat', 'Sabtu'];
+        const daftarBulan = ['Januari', 'Februari', 'Maret', 'April', 'Mei', 'Juni', 'Juli', 'Agustus', 'September', 'Oktober', 'November', 'Desember'];
+        
+        const namaHari = daftarHari[waktu.getDay()];
+        const tanggal = waktu.getDate();
+        const namaBulan = daftarBulan[waktu.getMonth()];
+        const tahun = waktu.getFullYear();
+        
+        // Memastikan jam, menit, dan detik selalu 2 digit (contoh: 09:05:03)
+        const jam = String(waktu.getHours()).padStart(2, '0');
+        const menit = String(waktu.getMinutes()).padStart(2, '0');
+        const detik = String(waktu.getSeconds()).padStart(2, '0');
+        
+        // Menyusun string dengan format entitas HTML &copy; untuk simbol ©
+        const formatTeks = `${namaHari} ${tanggal} ${namaBulan} ${jam}:${menit}:${detik} ${tahun} &copy;`;
+        
+        // Memasukkan teks ke dalam span ber-ID waktu-sekarang
+        document.getElementById('waktu-sekarang').innerHTML = formatTeks;
+    }
+
+    // Menjalankan fungsi pertama kali saat halaman dimuat
+    perbaruiWaktu();
+    
+    // Mengatur agar fungsi dijalankan berulang setiap 1 detik (1000 milidetik)
+    setInterval(perbaruiWaktu, 1000);
+
     document.addEventListener('DOMContentLoaded', () => {
         const observerOptions = {
             root: null,

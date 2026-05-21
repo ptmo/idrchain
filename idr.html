@@ -36,6 +36,12 @@
             -webkit-font-smoothing: antialiased;
         }
 
+        .container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+        }
+
         /* --- Navigation --- */
         nav {
             background-color: rgba(255, 255, 255, 0.9);
@@ -91,11 +97,12 @@
 
         /* --- Hero Section --- */
         .hero {
-            padding: 12rem 5% 9rem;
-            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
-            color: var(--white);
-            text-align: center;
-            clip-path: polygon(0 0, 100% 0, 100% 95%, 0 100%);
+    width: 100%;
+    padding: 13rem 5% 10rem;
+    background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+    color: var(--white);
+    text-align: center;
+    clip-path: polygon(0 0, 100% 0, 100% 95%, 0 100%);
         }
 
         .hero-badge {
@@ -173,9 +180,9 @@
 
         /* --- Global Section Style --- */
         section {
-            padding: 6rem 5%;
-            max-width: 1200px;
-            margin: 0 auto;
+    padding: 6rem 5%;
+    width: 100%;
+    position: relative;
         }
 
         .section-header {
@@ -499,6 +506,7 @@
 
     <section id="masalah" class="bg-white-section">
         <div style="padding: 5rem 5%; max-width: 1200px; margin: 0 auto;">
+            <div class="container">
             <div class="section-header">
                 <span>Konteks & Urgensi</span>
                 <h2>Mengapa Negara Membutuhkan IDR Chain?</h2>
@@ -524,6 +532,7 @@
                 </div>
             </div>
         </div>
+    </div>
     </section>
 
     <section id="arsitektur">

@@ -529,28 +529,33 @@
     <section id="masalah" class="bg-white-section">
         <div class="container">
             <div class="section-header reveal">
-                <span>Konteks & Urgensi</span>
-                <h2>Mengapa Negara Membutuhkan IDR Chain?</h2>
-                <p>Sistem keuangan modern telah efisien secara digital, namun masih menyisakan ruang gelap pada distribusi alokasi dana publik.</p>
-            </div>
-            
-            <div class="problem-grid">
-                <div class="problem-card reveal delay-100">
-                    <h4>Opasitas Aliran Dana Negara</h4>
-                    <p>Publik hanya melihat laporan akhir pasca-realisasi. Jalur dana dari kas negara menuju program penyalur, bank, hingga tangan vendor tidak dapat dipantau secara real-time.</p>
-                </div>
-                <div class="problem-card reveal delay-200">
-                    <h4>Celah Rekening Fiktif</h4>
-                    <p>Munculnya data penerima bantuan sosial palsu atau perantara manipulatif akibat lemahnya proses audit terintegrasi di luar ekosistem internal lembaga.</p>
-                </div>
-                <div class="problem-card reveal delay-300">
-                    <h4>Pencucian Uang Konvensional</h4>
-                    <p>Kemudahan pemecahan nilai transaksi pada struktur perbankan tradisional guna menyamarkan asal-usul aliran dana hasil pelanggaran hukum.</p>
-                </div>
-                <div class="problem-card reveal delay-400">
-                    <h4>Dilema Privasi Penerima Manfaat</h4>
-                    <p>Tuntutan audit bansos terkadang mengorbankan martabat warga dengan membuka identitas atau membatasi ruang kendali finansial dasar mereka secara berlebihan.</p>
-                </div>
+                <div class="section-header reveal">
+    <span>Konteks & Urgensi</span>
+    <h2>Mengapa IDR Chain Dibutuhkan?</h2>
+    <p>Sistem keuangan digital telah berkembang pesat, namun distribusi dana publik masih membutuhkan jejak audit yang lebih terintegrasi, real-time, dan tetap menjaga privasi penerima manfaat.</p>
+</div>
+
+<div class="problem-grid">
+    <div class="problem-card reveal delay-100">
+        <h4>Transparansi Aliran Dana Publik</h4>
+        <p>Publik sering menerima informasi setelah proses realisasi selesai. IDR Chain menghadirkan jejak audit yang lebih terstruktur dari kas negara, program penyalur, bank, hingga vendor atau penerima manfaat.</p>
+    </div>
+
+    <div class="problem-card reveal delay-200">
+        <h4>Validasi Rekening Penerima</h4>
+        <p>Integrasi rekening dengan KYC on-chain membantu memastikan dana program diterima oleh pihak yang sesuai, sekaligus mengurangi risiko data ganda, rekening tidak valid, atau penyaluran yang tidak tepat sasaran.</p>
+    </div>
+
+    <div class="problem-card reveal delay-300">
+        <h4>Pemantauan Risiko Transaksi</h4>
+        <p>Sistem risk engine membantu mendeteksi pola transaksi tidak wajar, pemecahan nominal berulang, atau aliran dana yang memerlukan peninjauan lebih lanjut oleh pihak berwenang.</p>
+    </div>
+
+    <div class="problem-card reveal delay-400">
+        <h4>Privasi Penerima Manfaat</h4>
+        <p>IDR Chain memisahkan data audit publik dan data pribadi warga. Aliran dana program dapat diawasi, sementara identitas, rekening, dan riwayat finansial penerima tetap dilindungi.</p>
+    </div>
+</div>
             </div>
         </div>
     </section>
@@ -572,12 +577,12 @@
                 <div class="card reveal delay-200">
                     <div class="icon">🔒</div>
                     <h3>Privacy by Default</h3>
-                    <p>Informasi pribadi rakyat sipil, PNS, serta nomor akun rahasia pejabat tidak akan diekspos ke public explorer. Data mentah asli disimpan off-chain, menyisakan komitmen kriptografis murni di dalam jaringan.</p>
+                    <p>Informasi pribadi rakyat sipil, PNS, serta akun pribadi pejabat tidak akan diekspos ke public explorer. Data mentah asli disimpan off-chain, menyisakan komitmen kriptografis murni di dalam jaringan.</p>
                 </div>
                 <div class="card reveal delay-300">
                     <div class="icon">👁️</div>
                     <h3>Transparency by Role</h3>
-                    <p>Tingkat visibilitas transaksi diatur secara ketat berdasarkan hierarki peran hukum. Dompet jabatan instansi, anggaran dinas, dan entitas korporasi mitra proyek bersifat transparan penuh untuk diaudit.</p>
+                    <p>Tingkat visibilitas transaksi diatur secara ketat berdasarkan hierarki peran hukum. Dompet jabatan instansi, anggaran dinas, dan entitas korporasi mitra proyek bersifat dapat diaudit secara terbuka sesuai kewenangan untuk diaudit.</p>
                 </div>
             </div>
 
@@ -585,12 +590,12 @@
                 <h3>Klasifikasi Registri Dompet On-Chain</h3>
                 <div class="type-badge-grid">
                     <div class="type-item"><span class="badge">.rky</span><p>Akun rakyat sipil. Identitas on-chain tersembunyi di balik perbankan umum.</p></div>
-                    <div class="type-item"><span class="badge">.rky_bansos</span><p>Dompet bersyarat khusus penerima jaminan sosial. Bersifat restriktif.</p></div>
+                    <div class="type-item"><span class="badge">.rky_bansos</span><p>Dompet bersyarat khusus penerima jaminan sosial. Mengikuti aturan pencairan khusus.</p></div>
                     <div class="type-item"><span class="badge">.pns</span><p>Akun penggajian aparatur sipil negara. Bersifat privat bagi publik.</p></div>
-                    <div class="type-item"><span class="badge">.pjb_private</span><p>Akun personal pejabat negara. Dilindungi privasi warga negara.</p></div>
-                    <div class="type-item"><span class="badge">.jbt</span><p>Akun melekat pada Jabatan Publik publik. Terbuka total bagi pengawasan warga.</p></div>
+                    <div class="type-item"><span class="badge">.pjb_private</span><p>Akun personal pejabat negara. Tetap dilindungi sebagai data pribadi.</p></div>
+                    <div class="type-item"><span class="badge">.jbt</span><p>Akun melekat pada Jabatan Publik. Dapat diaudit publik sesuai kewenangan bagi pengawasan warga.</p></div>
                     <div class="type-item"><span class="badge">.ins</span><p>Dompet resmi institusi, lembaga, kementerian, atau pemda terkait.</p></div>
-                    <div class="type-item"><span class="badge">.vdr</span><p>Dompet wajib milik vendor/kontraktor rekanan proyek negara.</p></div>
+                    <div class="type-item"><span class="badge">.vdr</span><p>Dompet akun resmi vendor/kontraktor rekanan proyek negara.</p></div>
                     <div class="type-item"><span class="badge">.bnk</span><p>Gateway interkoneksi likuiditas antar lembaga perbankan.</p></div>
                 </div>
             </div>

@@ -34,6 +34,7 @@
             color: var(--text-dark);
             line-height: 1.6;
             -webkit-font-smoothing: antialiased;
+            overflow-x: hidden;
         }
 
         .container {
@@ -41,6 +42,25 @@
     max-width: 1200px;
     margin: 0 auto;
         }
+
+        .reveal {
+            opacity: 0;
+            transform: translateY(35px);
+            /* Kurva animasi cubic-bezier memberikan efek perlambatan yang sangat smooth di akhir gerakan */
+            transition: opacity 0.9s cubic-bezier(0.16, 1, 0.3, 1), transform 0.9s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Jeda waktu untuk efek bertingkat (staggered) */
+        .delay-100 { transition-delay: 100ms; }
+        .delay-200 { transition-delay: 200ms; }
+        .delay-300 { transition-delay: 300ms; }
+        .delay-400 { transition-delay: 400ms; }
+        .delay-500 { transition-delay: 500ms; }
 
         /* --- Navigation --- */
         nav {
@@ -495,96 +515,98 @@
     </nav>
 
     <section class="hero">
-        <div class="hero-badge">Draf Teknis Komprehensif v0.1</div>
-        <h1>Infrastruktur Keuangan Nasional Berbasis Blockchain Permissioned</h1>
-        <p>Rel audit otomatis di bawah permukaan sistem perbankan konvensional. Mewujudkan transparansi radikal untuk uang negara, sekaligus menjamin privasi absolut bagi warga negara.</p>
-        <div class="hero-buttons">
-            <a href="IDR_Chain_Whitepaper.pdf" target="_blank" class="btn-primary">Unduh Whitepaper (PDF)</a>
-            <a href="#masalah" class="btn-outline">Pelajari Komsep Detail</a>
+        <div class="container">
+            <div class="hero-badge reveal">Draf Teknis Komprehensif v0.1</div>
+            <h1 class="reveal delay-100">Infrastruktur Keuangan Nasional Berbasis Blockchain Permissioned</h1>
+            <p class="reveal delay-200">Rel audit otomatis di bawah permukaan sistem perbankan konvensional. Mewujudkan transparansi radikal untuk uang negara, sekaligus menjamin privasi absolut bagi warga negara.</p>
+            <div class="hero-buttons reveal delay-300">
+                <a href="IDR_Chain_Whitepaper.pdf" target="_blank" class="btn-primary">Unduh Whitepaper (PDF)</a>
+                <a href="#masalah" class="btn-outline">Pelajari Konsep Detail</a>
+            </div>
         </div>
     </section>
 
     <section id="masalah" class="bg-white-section">
-        <div style="padding: 5rem 5%; max-width: 1200px; margin: 0 auto;">
-            <div class="container">
-            <div class="section-header">
+        <div class="container">
+            <div class="section-header reveal">
                 <span>Konteks & Urgensi</span>
                 <h2>Mengapa Negara Membutuhkan IDR Chain?</h2>
                 <p>Sistem keuangan modern telah efisien secara digital, namun masih menyisakan ruang gelap pada distribusi alokasi dana publik.</p>
             </div>
             
             <div class="problem-grid">
-                <div class="problem-card">
+                <div class="problem-card reveal delay-100">
                     <h4>Opasitas Aliran Dana Negara</h4>
                     <p>Publik hanya melihat laporan akhir pasca-realisasi. Jalur dana dari kas negara menuju program penyalur, bank, hingga tangan vendor tidak dapat dipantau secara real-time.</p>
                 </div>
-                <div class="problem-card">
+                <div class="problem-card reveal delay-200">
                     <h4>Celah Rekening Fiktif</h4>
                     <p>Munculnya data penerima bantuan sosial palsu atau perantara manipulatif akibat lemahnya proses audit terintegrasi di luar ekosistem internal lembaga.</p>
                 </div>
-                <div class="problem-card">
+                <div class="problem-card reveal delay-300">
                     <h4>Pencucian Uang Konvensional</h4>
                     <p>Kemudahan pemecahan nilai transaksi pada struktur perbankan tradisional guna menyamarkan asal-usul aliran dana hasil pelanggaran hukum.</p>
                 </div>
-                <div class="problem-card">
+                <div class="problem-card reveal delay-400">
                     <h4>Dilema Privasi Penerima Manfaat</h4>
                     <p>Tuntutan audit bansos terkadang mengorbankan martabat warga dengan membuka identitas atau membatasi ruang kendali finansial dasar mereka secara berlebihan.</p>
                 </div>
             </div>
         </div>
-    </div>
     </section>
 
     <section id="arsitektur">
-        <div class="section-header">
-            <span>Infrastruktur Dasar</span>
-            <h2>Prinsip Desain & Ekosistem Akun</h2>
-            <p>Konsep integrasi berlapis (Deep Layer hingga Surface Web) yang menyatukan kenyamanan perbankan dengan kekuatan ledger terdistribusi.</p>
-        </div>
+        <div class="container">
+            <div class="section-header reveal">
+                <span>Infrastruktur Dasar</span>
+                <h2>Prinsip Desain & Ekosistem Akun</h2>
+                <p>Konsep integrasi berlapis (Deep Layer hingga Surface Web) yang menyatukan kenyamanan perbankan dengan kekuatan ledger terdistribusi.</p>
+            </div>
 
-        <div class="grid-3">
-            <div class="card">
-                <div class="icon">🏦</div>
-                <h3>Banking-First Integration</h3>
-                <p>Rakyat tidak dipaksa menggunakan MetaMask, mengelola RPC, membayar gas fee, atau menyimpan seed phrase. Nomor rekening bank dan e-wallet konvensional tetap menjadi pintu akses utama, terhubung langsung via <strong>On-Chain Binding Registry</strong>.</p>
+            <div class="grid-3">
+                <div class="card reveal delay-100">
+                    <div class="icon">🏦</div>
+                    <h3>Banking-First Integration</h3>
+                    <p>Rakyat tidak dipaksa menggunakan MetaMask, mengelola RPC, membayar gas fee, atau menyimpan seed phrase. Nomor rekening bank dan e-wallet konvensional tetap menjadi pintu akses utama, terhubung langsung via <strong>On-Chain Binding Registry</strong>.</p>
+                </div>
+                <div class="card reveal delay-200">
+                    <div class="icon">🔒</div>
+                    <h3>Privacy by Default</h3>
+                    <p>Informasi pribadi rakyat sipil, PNS, serta nomor akun rahasia pejabat tidak akan diekspos ke public explorer. Data mentah asli disimpan off-chain, menyisakan komitmen kriptografis murni di dalam jaringan.</p>
+                </div>
+                <div class="card reveal delay-300">
+                    <div class="icon">👁️</div>
+                    <h3>Transparency by Role</h3>
+                    <p>Tingkat visibilitas transaksi diatur secara ketat berdasarkan hierarki peran hukum. Dompet jabatan instansi, anggaran dinas, dan entitas korporasi mitra proyek bersifat transparan penuh untuk diaudit.</p>
+                </div>
             </div>
-            <div class="card">
-                <div class="icon">🔒</div>
-                <h3>Privacy by Default</h3>
-                <p>Informasi pribadi rakyat sipil, PNS, serta nomor akun rahasia pejabat tidak akan diekspos ke public explorer. Data mentah asli disimpan off-chain, menyisakan komitmen kriptografis murni di dalam jaringan.</p>
-            </div>
-            <div class="card">
-                <div class="icon">👁️</div>
-                <h3>Transparency by Role</h3>
-                <p>Tingkat visibilitas transaksi diatur secara ketat berdasarkan hierarki peran hukum. Dompet jabatan instansi, anggaran dinas, dan entitas korporasi mitra proyek bersifat transparan penuh untuk diaudit.</p>
-            </div>
-        </div>
 
-        <div class="account-types">
-            <h3>Klasifikasi Registri Dompet On-Chain</h3>
-            <div class="type-badge-grid">
-                <div class="type-item"><span class="badge">.rky</span><p>Akun rakyat sipil. Identitas on-chain tersembunyi di balik perbankan umum.</p></div>
-                <div class="type-item"><span class="badge">.rky_bansos</span><p>Dompet bersyarat khusus penerima jaminan sosial. Bersifat restriktif.</p></div>
-                <div class="type-item"><span class="badge">.pns</span><p>Akun penggajian aparatur sipil negara. Bersifat privat bagi publik.</p></div>
-                <div class="type-item"><span class="badge">.pjb_private</span><p>Akun personal pejabat negara. Dilindungi privasi warga negara.</p></div>
-                <div class="type-item"><span class="badge">.jbt</span><p>Akun melekat pada Jabatan Publik publik. Terbuka total bagi pengawasan warga.</p></div>
-                <div class="type-item"><span class="badge">.ins</span><p>Dompet resmi institusi, lembaga, kementerian, atau pemda terkait.</p></div>
-                <div class="type-item"><span class="badge">.vdr</span><p>Dompet wajib milik vendor/kontraktor rekanan proyek negara.</p></div>
-                <div class="type-item"><span class="badge">.bnk</span><p>Gateway interkoneksi likuiditas antar lembaga perbankan.</p></div>
+        <div class="account-types reveal delay-200">
+                <h3>Klasifikasi Registri Dompet On-Chain</h3>
+                <div class="type-badge-grid">
+                    <div class="type-item"><span class="badge">.rky</span><p>Akun rakyat sipil. Identitas on-chain tersembunyi di balik perbankan umum.</p></div>
+                    <div class="type-item"><span class="badge">.rky_bansos</span><p>Dompet bersyarat khusus penerima jaminan sosial. Bersifat restriktif.</p></div>
+                    <div class="type-item"><span class="badge">.pns</span><p>Akun penggajian aparatur sipil negara. Bersifat privat bagi publik.</p></div>
+                    <div class="type-item"><span class="badge">.pjb_private</span><p>Akun personal pejabat negara. Dilindungi privasi warga negara.</p></div>
+                    <div class="type-item"><span class="badge">.jbt</span><p>Akun melekat pada Jabatan Publik publik. Terbuka total bagi pengawasan warga.</p></div>
+                    <div class="type-item"><span class="badge">.ins</span><p>Dompet resmi institusi, lembaga, kementerian, atau pemda terkait.</p></div>
+                    <div class="type-item"><span class="badge">.vdr</span><p>Dompet wajib milik vendor/kontraktor rekanan proyek negara.</p></div>
+                    <div class="type-item"><span class="badge">.bnk</span><p>Gateway interkoneksi likuiditas antar lembaga perbankan.</p></div>
+                </div>
             </div>
         </div>
     </section>
 
     <section id="mekanisme" class="bg-white-section">
-        <div style="padding: 5rem 5%; max-width: 1200px; margin: 0 auto;">
-            <div class="section-header">
+        <div class="container">
+            <div class="section-header reveal">
                 <span>Operasional Jaringan</span>
                 <h2>Mekanisme Alur Logika Sistem</h2>
                 <p>Bagaimana program kerja smart contract mengontrol distribusi keuangan publik secara aman.</p>
             </div>
 
             <div class="workflow-flex">
-                <div class="workflow-step">
+                <div class="workflow-step reveal delay-100">
                     <div class="step-number">1</div>
                     <div class="step-content">
                         <h3>Distribusi Bantuan Sosial (Restricted Welfare)</h3>
@@ -597,7 +619,7 @@
                     </div>
                 </div>
 
-                <div class="workflow-step">
+                <div class="workflow-step reveal delay-200">
                     <div class="step-number">2</div>
                     <div class="step-content">
                         <h3>Penggajian Aparatur Negara & Pejabat</h3>
@@ -610,7 +632,7 @@
                     </div>
                 </div>
 
-              <div class="workflow-step">
+                <div class="workflow-step reveal delay-300">
                     <div class="step-number">3</div>
                     <div class="step-content">
                         <h3>Dana Desa & Pembiayaan Vendor Mitra</h3>
@@ -626,62 +648,88 @@
     </section>
 
   <section id="konsensus">
-        <div class="tech-specs">
-            <div>
-                <div class="section-header" style="text-align: left;">
-                    <span>Spesifikasi Utama</span>
-                    <h2>Konsensus Jaringan & Tata Kelola Validator</h2>
+        <div class="container">
+            <div class="tech-specs">
+                <div class="reveal delay-100">
+                    <div class="section-header" style="text-align: left;">
+                        <span>Spesifikasi Utama</span>
+                        <h2>Konsensus Jaringan & Tata Kelola Validator</h2>
+                    </div>
+                    <div class="tech-text">
+                        <p style="color: var(--text-muted); margin-bottom: 1.5rem;">IDR Chain didesain secara tertutup dan selektif (*Permissioned*) guna menjaga kedaulatan moneter dan komputasi nasional, memisahkannya dari volatilitas aset kripto publik:</p>
+                        <ul>
+                            <li><strong>Konsensus QBFT (Istanbul Byzantine Fault Tolerance Berbasis Kuorum):</strong> Memberikan finalitas transaksi instan dalam hitungan detik tanpa risiko percabangan jaring (*forking*).</li>
+                            <li><strong>Bebas Biaya Energi Tinggi:</strong> Tidak memerlukan aktivitas penambangan berdaya komputasi masif (*No Mining/Proof of Work*).</li>
+                            <li><strong>Struktur Kompensasi Validator Tetap:</strong> Node validator dijalankan oleh institusi negara tepercaya serta universitas riset nasional terpilih. Mereka digaji berdasarkan metrik performa operasional jaring, bukan dari pencetakan pasokan token inflatif baru.</li>
+                            <li><strong>Explorer Berlapis:</strong> Menyediakan Portal Publik untuk agregat data umum, Portal Audit khusus untuk lembaga negara (BPK/KPK/PPATK), serta Portal Warga privat bagi individu.</li>
+                        </ul>
+                    </div>
                 </div>
-                <div class="tech-text">
-                    <p style="color: var(--text-muted); margin-bottom: 1.5rem;">IDR Chain didesain secara tertutup dan selektif (*Permissioned*) guna menjaga kedaulatan moneter dan komputasi nasional, memisahkannya dari volatilitas aset kripto publik:</p>
-                    <ul>
-                        <li><strong>Konsensus QBFT (Istanbul Byzantine Fault Tolerance Berbasis Kuorum):</strong> Memberikan finalitas transaksi instan dalam hitungan detik tanpa risiko percabangan jaring (*forking*).</li>
-                        <li><strong>Bebas Biaya Energi Tinggi:</strong> Tidak memerlukan aktivitas penambangan berdaya komputasi masif (*No Mining/Proof of Work*).</li>
-                        <li><strong>Struktur Kompensasi Validator Tetap:</strong> Node validator dijalankan oleh institusi negara tepercaya serta universitas riset nasional terpilih. Mereka digaji berdasarkan metrik performa operasional jaring, bukan dari pencetakan pasokan token inflatif baru.</li>
-                        <li><strong>Explorer Berlapis:</strong> Menyediakan Portal Publik untuk agregat data umum, Portal Audit khusus untuk lembaga negara (BPK/KPK/PPATK), serta Portal Warga privat bagi individu.</li>
-                    </ul>
-                </div>
-            </div>
 
-          <div style="background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%); padding: 3rem; border-radius: 24px; color: #ffffff; box-shadow: 0 15px 40px rgba(15,23,42,0.15);">
-                <h4 style="color: var(--accent); font-family: monospace; font-size: 0.9rem; letter-spacing: 1px; text-transform: uppercase; margin-bottom: 1rem;">// Arsitektur Minimum Viable Jaringan (MVP)</h4>
-                <p style="font-size: 0.95rem; color: #94a3b8; margin-bottom: 2rem; line-height: 1.7;">Ekosistem dasar difokuskan pada pemetaan integrasi inti:</p>
-                <div style="display: flex; flex-direction: column; gap: 1rem; font-family: monospace; font-size: 0.88rem; color: #cbd5e1;">
-                    <div style="border-bottom: 1px solid #334155; padding-bottom: 0.5rem;">• Core Permissioned Ledger (QBFT Node)</div>
-                    <div style="border-bottom: 1px solid #334155; padding-bottom: 0.5rem;">• Account Binding Registry Server API</div>
-                    <div style="border-bottom: 1px solid #334155; padding-bottom: 0.5rem;">• Restricted Smart Contract Logic Factory</div>
-                    <div style="border-bottom: 1px solid #334155; padding-bottom: 0.5rem;">• Multi-Tier Network Audit Dashboard Explorer</div>
-                    <div style="padding-bottom: 0.5rem;">• Banking Interface Simulation Layer Gateway</div>
+          <div class="reveal delay-300" style="background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%); padding: 3rem; border-radius: 24px; color: #ffffff; box-shadow: 0 15px 40px rgba(15,23,42,0.15);">
+                    <h4 style="color: var(--accent); font-family: monospace; font-size: 0.9rem; letter-spacing: 1px; text-transform: uppercase; margin-bottom: 1rem;">// Arsitektur Minimum Viable Jaringan (MVP)</h4>
+                    <p style="font-size: 0.95rem; color: #94a3b8; margin-bottom: 2rem; line-height: 1.7;">Ekosistem dasar difokuskan pada pemetaan integrasi inti:</p>
+                    <div style="display: flex; flex-direction: column; gap: 1rem; font-family: monospace; font-size: 0.88rem; color: #cbd5e1;">
+                        <div style="border-bottom: 1px solid #334155; padding-bottom: 0.5rem;">• Core Permissioned Ledger (QBFT Node)</div>
+                        <div style="border-bottom: 1px solid #334155; padding-bottom: 0.5rem;">• Account Binding Registry Server API</div>
+                        <div style="border-bottom: 1px solid #334155; padding-bottom: 0.5rem;">• Restricted Smart Contract Logic Factory</div>
+                        <div style="border-bottom: 1px solid #334155; padding-bottom: 0.5rem;">• Multi-Tier Network Audit Dashboard Explorer</div>
+                        <div style="padding-bottom: 0.5rem;">• Banking Interface Simulation Layer Gateway</div>
+                    </div>
                 </div>
             </div>
         </div>
-    </section>
+  </section>
 
     <section id="dokumen" class="pdf-section">
-        <div class="section-header">
-            <span>Naskah Akademis</span>
-            <h2>Pratinjau Draf Komprehensif Whitepaper</h2>
-            <p>Telusuri naskah orisinal arsitektur teknologi, analisis mitigasi risiko pencucian uang, rencana tata kelola jaring, serta detail model data kontrak di bawah ini.</p>
-        </div>
-        
-        <div class="pdf-container">
-            <iframe src="IDR_Chain_Whitepaper.pdf" title="IDR Chain Technical Whitepaper v0.1">
-                Sistem peramban Anda tidak mendukung penampilan dokumen PDF secara instan. Silakan 
-                <a href="IDR_Chain_Whitepaper.pdf">klik tautan ini untuk mengunduh berkas PDF secara langsung</a>.
-            </iframe>
+        <div class="container">
+            <div class="section-header reveal">
+                <span>Naskah Akademis</span>
+                <h2>Pratinjau Draf Komprehensif Whitepaper</h2>
+                <p>Telusuri naskah orisinal arsitektur teknologi, analisis mitigasi risiko pencucian uang, rencana tata kelola jaring, serta detail model data kontrak di bawah ini.</p>
+            </div>
+            
+            <div class="pdf-container reveal delay-200">
+                <iframe src="IDR_Chain_Whitepaper.pdf" title="IDR Chain Technical Whitepaper v0.1">
+                    Sistem peramban Anda tidak mendukung penampilan dokumen PDF secara instan. Silakan 
+                    <a href="IDR_Chain_Whitepaper.pdf">klik tautan ini untuk mengunduh berkas PDF secara langsung</a>.
+                </iframe>
+            </div>
         </div>
     </section>
 
   <footer>
-        <div class="footer-logo">IDR<span>Chain</span></div>
-        <div class="footer-text">
-            Mewujudkan ekosistem keuangan negara yang bersih dan dapat dipertanggungjawabkan melalui pemanfaatan solusi teknologi mutakhir yang aman, andal, serta tepercaya.
+        <div class="container">
+            <div class="footer-logo">IDR<span>Chain</span></div>
+            <div class="footer-text">
+                Mewujudkan ekosistem keuangan negara yang bersih dan dapat dipertanggungjawabkan melalui pemanfaatan solusi teknologi mutakhir yang aman, andal, serta tepercaya.
+            </div>
+            <div class="footer-bottom">
+                © 2026 IDR Chain Initiative. Hak Cipta Dilindungi Undang-Undang.<br>
+                <span style="color: #475569; font-size: 0.8rem; display: block; margin-top: 0.6rem;">Dokumen ini merupakan publikasi konsep teknis akademis awal dan bersifat non-resmi untuk kepentingan simulasi cetak biru infrastruktur nasional.</span>
+            </div>
         </div>
-        <div class="footer-bottom">
-            © 2026 IDR Chain Initiative. Hak Cipta Dilindungi Undang-Undang.<br>
-            <span style="color: #475569; font-size: 0.8rem; display: block; margin-top: 0.6rem;">Dokumen ini merupakan publikasi konsep teknis akademis awal dan bersifat non-resmi untuk kepentingan simulasi cetak biru infrastruktur nasional.</span>
-        </div>
-    </footer>
+  </footer>
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const observerOptions = {
+            root: null,
+            rootMargin: '0px',
+            threshold: 0.15 // Animasi terpicu saat 15% elemen terlihat di layar
+        };
 
+        const observer = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                    observer.unobserve(entry.target); // Hanya animasi 1x agar tidak mengganggu
+                }
+            });
+        }, observerOptions);
+
+        const revealElements = document.querySelectorAll('.reveal');
+        revealElements.forEach(el => observer.observe(el));
+    });
+</script>
 </body>
 </html>

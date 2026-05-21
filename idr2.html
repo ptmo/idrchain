@@ -235,52 +235,120 @@
             .hero h1 { font-size: 2.6rem; }
             .tech-specs { grid-template-columns: 1fr; gap: 2.5rem; }
         }
-        @media (max-width: 768px) {
-            .nav-links { display: none; }
-            .hero { padding: 10rem 5% 6rem; }
-            .hero h1 { font-size: 2rem; }
-            .hero p { font-size: 1.05rem; }
-            .hero-buttons { flex-direction: column; }
-            .btn-primary, .btn-outline { width: 100%; text-align: center; }
-            .section-header h2 { font-size: 1.75rem; }
-            .workflow-step { flex-direction: column; gap: 1rem; padding: 1.5rem; }
-            .pdf-container { height: 450px; }
-        }
+        /* --- Hamburger Icon & Animasi Hover --- */
+.hamburger-btn {
+    display: none; /* Sembunyikan di PC */
+    background: transparent;
+    border: none;
+    font-size: 1.5rem;
+    color: var(--primary);
+    cursor: pointer;
+    margin-left: 10px;
+    padding: 5px;
+    outline: none;
+}
+
+/* Transisi elastis bolak-balik saat hover/pasca-hover */
+.hamburger-btn i {
+    transition: transform 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55), color 0.3s ease;
+}
+
+.hamburger-btn:hover i {
+    transform: scale(1.15) rotate(90deg); /* Berputar dan sedikit membesar */
+    color: var(--secondary);
+}
+
+/* --- Mode Mobile --- */
+@media (max-width: 768px) {
+    .hamburger-btn {
+        display: block; /* Munculkan hamburger di mobile */
+    }
+
+    /* Ubah .nav-links menjadi dropdown custom bergaya glassmorphism */
+    .nav-links {
+        position: absolute;
+        top: 75px;
+        right: 5%;
+        background: rgba(255, 255, 255, 0.98);
+        backdrop-filter: blur(15px);
+        width: 240px;
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 1.5rem;
+        border-radius: 16px;
+        box-shadow: 0 15px 40px rgba(15, 23, 42, 0.15);
+        border: 1px solid var(--border-color);
+        gap: 1.2rem;
+        
+        /* Animasi Transisi Dropdown */
+        opacity: 0;
+        visibility: hidden;
+        transform: translateY(-20px);
+        transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    /* Kelas aktif saat hamburger diklik */
+    .nav-links.mobile-show {
+        opacity: 1;
+        visibility: visible;
+        transform: translateY(0);
+    }
+
+    /* Penyesuaian tombol di dalam dropdown mobile */
+    .nav-links .nav-btn {
+        width: 100%;
+        text-align: center;
+        margin-top: 0.5rem;
+    }
+
+    /* Hero fix untuk mobile (tetap dipertahankan) */
+    .hero { padding: 10rem 5% 6rem; }
+    .hero h1 { font-size: 2rem; }
+    .hero p { font-size: 1.05rem; }
+    .hero-buttons { flex-direction: column; }
+    .btn-primary, .btn-outline { width: 100%; text-align: center; }
+    .section-header h2 { font-size: 1.75rem; }
+    .workflow-step { flex-direction: column; gap: 1rem; padding: 1.5rem; }
+    .pdf-container { height: 450px; }
+}
     </style>
 </head>
 <body>
 
     <nav>
-        <div class="logo">IDR<span>Chain</span></div>
-        <div class="nav-right-cluster">
-            <div class="nav-links">
-                <a href="#masalah" data-i18n="nav_masalah">Masalah</a>
-                <a href="#arsitektur" data-i18n="nav_arsitektur">Arsitektur</a>
-                <a href="#mekanisme" data-i18n="nav_mekanisme">Mekanisme Alur</a>
-                <a href="#konsensus" data-i18n="nav_konsensus">Konsensus</a>
-                <a href="#dokumen" class="nav-btn" data-i18n="nav_dokumen">Whitepaper Resmi</a>
-            </div>
-            
-            <div class="lang-switcher">
-                <button class="lang-btn" id="lang-toggle">
-                    <img id="current-flag" src="https://flagcdn.com/w40/id.png" alt="ID">
-                </button>
-                <div class="lang-dropdown" id="lang-menu">
-                    <div class="lang-option" onclick="changeLang('id', 'https://flagcdn.com/w40/id.png')">
-                        <img src="https://flagcdn.com/w40/id.png" alt="ID"> Indonesia
-                    </div>
-                    <div class="lang-option" onclick="changeLang('en', 'https://flagcdn.com/w40/us.png')">
-                        <img src="https://flagcdn.com/w40/us.png" alt="EN"> English (US)
-                    </div>
-                    <div class="lang-option" onclick="changeLang('zh', 'https://flagcdn.com/w40/cn.png')">
-                        <img src="https://flagcdn.com/w40/cn.png" alt="ZH"> 中文 (China)
-                    </div>
-                    <div class="lang-option" onclick="changeLang('ru', 'https://flagcdn.com/w40/ru.png')">
-                        <img src="https://flagcdn.com/w40/ru.png" alt="RU"> Русский
-                    </div>
+    <div class="logo">IDR<span>Chain</span></div>
+    <div class="nav-right-cluster">
+        <div class="nav-links" id="main-nav">
+            <a href="#masalah" data-i18n="nav_masalah">Masalah</a>
+            <a href="#arsitektur" data-i18n="nav_arsitektur">Arsitektur</a>
+            <a href="#mekanisme" data-i18n="nav_mekanisme">Mekanisme Alur</a>
+            <a href="#konsensus" data-i18n="nav_konsensus">Konsensus</a>
+            <a href="#dokumen" class="nav-btn" data-i18n="nav_dokumen">Whitepaper Resmi</a>
+        </div>
+        
+        <div class="lang-switcher">
+            <button class="lang-btn" id="lang-toggle">
+                <img id="current-flag" src="https://flagcdn.com/w40/id.png" alt="ID">
+            </button>
+            <div class="lang-dropdown" id="lang-menu">
+                <div class="lang-option" onclick="changeLang('id', 'https://flagcdn.com/w40/id.png')">
+                    <img src="https://flagcdn.com/w40/id.png" alt="ID"> Indonesia
+                </div>
+                <div class="lang-option" onclick="changeLang('en', 'https://flagcdn.com/w40/us.png')">
+                    <img src="https://flagcdn.com/w40/us.png" alt="EN"> English (US)
+                </div>
+                <div class="lang-option" onclick="changeLang('zh', 'https://flagcdn.com/w40/cn.png')">
+                    <img src="https://flagcdn.com/w40/cn.png" alt="ZH"> 中文 (China)
+                </div>
+                <div class="lang-option" onclick="changeLang('ru', 'https://flagcdn.com/w40/ru.png')">
+                    <img src="https://flagcdn.com/w40/ru.png" alt="RU"> Русский
                 </div>
             </div>
         </div>
+        <button class="hamburger-btn" id="hamburger-menu">
+            <i class="fas fa-bars"></i>
+        </button>
+    </div>
     </nav>
 
     <section class="hero">
@@ -669,6 +737,47 @@
 
         perbaruiWaktu();
         setInterval(perbaruiWaktu, 1000);
+
+        // --- Logika Menu Hamburger Mobile ---
+const hamburgerBtn = document.getElementById('hamburger-menu');
+const mainNav = document.getElementById('main-nav');
+const iconHamburger = hamburgerBtn.querySelector('i');
+
+hamburgerBtn.addEventListener('click', (e) => {
+    e.stopPropagation(); // Mencegah bentrok dengan klik layar luar
+    mainNav.classList.toggle('mobile-show');
+    
+    // Ganti ikon menjadi silang jika menu terbuka, dan sebaliknya
+    if (mainNav.classList.contains('mobile-show')) {
+        iconHamburger.classList.remove('fa-bars');
+        iconHamburger.classList.add('fa-times');
+        iconHamburger.style.transform = "rotate(180deg)"; // Animasi putar ekstra saat buka
+    } else {
+        iconHamburger.classList.remove('fa-times');
+        iconHamburger.classList.add('fa-bars');
+        iconHamburger.style.transform = "rotate(0deg)";
+    }
+});
+
+// Tutup dropdown menu secara otomatis ketika mengklik di luar area
+document.addEventListener('click', (e) => {
+    if (!hamburgerBtn.contains(e.target) && !mainNav.contains(e.target)) {
+        mainNav.classList.remove('mobile-show');
+        iconHamburger.classList.remove('fa-times');
+        iconHamburger.classList.add('fa-bars');
+        iconHamburger.style.transform = "rotate(0deg)";
+    }
+});
+
+// Tutup menu otomatis setelah link di dalam dropdown ditekan
+mainNav.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', () => {
+        mainNav.classList.remove('mobile-show');
+        iconHamburger.classList.remove('fa-times');
+        iconHamburger.classList.add('fa-bars');
+        iconHamburger.style.transform = "rotate(0deg)";
+    });
+});
     </script>
 </body>
 </html>

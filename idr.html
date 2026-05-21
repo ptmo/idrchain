@@ -607,7 +607,7 @@
             <div class="section-header reveal">
                 <span>Operasional Jaringan</span>
                 <h2>Mekanisme Alur Logika Sistem</h2>
-                <p>Bagaimana program kerja smart contract mengontrol distribusi keuangan publik secara aman.</p>
+                <p>Bagaimana program kerja smart contract mengatur dan mencatat distribusi keuangan publik secara aman.</p>
             </div>
 
             <div class="workflow-flex">
@@ -617,9 +617,9 @@
                         <h3>Distribusi Bantuan Sosial (Restricted Welfare)</h3>
                         <p>Dana bansos dari dompet negara masuk ke dalam alokasi bersyarat di jaringan blockchain sebelum didistribusikan:</p>
                         <ul>
-                            <li>Fase Pra-Cair: Dana tersimpan di wallet <span style="font-family: monospace;">.rky_bansos</span> dan terkunci secara otomatis oleh logika kode program.</li>
-                            <li>Kepatuhan KYC: Dana hanya diizinkan berpindah dan mencair apabila data KYC pada akun bank tujuan tervalidasi 100% cocok dengan penerima sah yang terdaftar dalam registri nasional.</li>
-                            <li>Fase Pasca-Cair: Begitu dicairkan secara sah ke rekening bank/e-wallet, dana sepenuhnya bertransformasi menjadi aset bebas yang sah demi melindungi kebebasan berbelanja individu tanpa intervensi.</li>
+                            <li>Fase Pra-Cair: Dana tersimpan di wallet <span style="font-family: monospace;">.rky_bansos</span> dan ditahan sesuai aturan program secara otomatis oleh logika kode program.</li>
+                            <li>Kepatuhan KYC: Dana hanya diizinkan berpindah dan mencair apabila data KYC pada akun bank tujuan tervalidasi terverifikasi cocok dengan penerima sah yang terdaftar dalam registri nasional.</li>
+                            <li>Fase Pasca-Cair: Begitu dicairkan secara sah ke rekening bank/e-wallet, dana sepenuhnya bertransformasi menjadi saldo milik penerima yang sah demi melindungi kebebasan berbelanja individu tanpa pembatasan berlebihan.</li>
                         </ul>
                     </div>
                 </div>
@@ -641,10 +641,10 @@
                     <div class="step-number">3</div>
                     <div class="step-content">
                         <h3>Dana Desa & Pembiayaan Vendor Mitra</h3>
-                        <p>Mengunci transparansi alokasi kontrak fisik secara berjenjang:</p>
+                        <p>Meningkatkan keterlacakan alokasi kontrak fisik secara berjenjang:</p>
                         <ul>
                             <li>Seluruh korporasi atau kontraktor pemenang proyek wajib mendaftarkan identitas pemilik manfaat asli (*beneficial ownership*) pada wallet berkode <span style="font-family: monospace;">.vdr</span>.</li>
-                            <li>Setiap pembayaran termin proyek diproses melalui *multi-approval smart contract* yang mensyaratkan tanda tangan digital berwenang tanpa bisa dimanipulasi secara sepihak.</li>
+                            <li>Setiap pembayaran termin proyek diproses melalui *multi-approval smart contract* yang mensyaratkan tanda tangan digital berwenang mengurangi risiko perubahan sepihak.</li>
                         </ul>
                     </div>
                 </div>
@@ -663,7 +663,7 @@
                     <div class="tech-text">
                         <p style="color: var(--text-muted); margin-bottom: 1.5rem;">IDR Chain didesain secara tertutup dan selektif (*Permissioned*) guna menjaga kedaulatan moneter dan komputasi nasional, memisahkannya dari volatilitas aset kripto publik:</p>
                         <ul>
-                            <li><strong>Konsensus QBFT (Istanbul Byzantine Fault Tolerance Berbasis Kuorum):</strong> Memberikan finalitas transaksi instan dalam hitungan detik tanpa risiko percabangan jaring (*forking*).</li>
+                            <li><strong>Konsensus QBFT (Quorum Byzantine Fault Tolerance):</strong> Memberikan finalitas transaksi instan dalam hitungan detik tanpa risiko percabangan jaring (*forking*).</li>
                             <li><strong>Bebas Biaya Energi Tinggi:</strong> Tidak memerlukan aktivitas penambangan berdaya komputasi masif (*No Mining/Proof of Work*).</li>
                             <li><strong>Struktur Kompensasi Validator Tetap:</strong> Node validator dijalankan oleh institusi negara tepercaya serta universitas riset nasional terpilih. Mereka digaji berdasarkan metrik performa operasional jaring, bukan dari pencetakan pasokan token inflatif baru.</li>
                             <li><strong>Explorer Berlapis:</strong> Menyediakan Portal Publik untuk agregat data umum, Portal Audit khusus untuk lembaga negara (BPK/KPK/PPATK), serta Portal Warga privat bagi individu.</li>
@@ -689,9 +689,9 @@
     <section id="dokumen" class="pdf-section">
         <div class="container">
             <div class="section-header reveal">
-                <span>Naskah Akademis</span>
-                <h2>Pratinjau Draf Komprehensif Whitepaper</h2>
-                <p>Telusuri naskah orisinal arsitektur teknologi, analisis mitigasi risiko pencucian uang, rencana tata kelola jaring, serta detail model data kontrak di bawah ini.</p>
+                <span>Dokumen Teknis</span>
+                <h2>Pratinjau Whitepaper IDR Chain</h2>
+                <p>Dokumen ini merangkum rancangan arsitektur, mekanisme integrasi perbankan, tata kelola validator, perlindungan data warga, serta model audit dana publik berbasis blockchain permissioned.</p>
             </div>
             
             <div class="pdf-container reveal delay-200">
@@ -707,11 +707,15 @@
         <div class="container">
             <div class="footer-logo">IDR<span>Chain</span></div>
             <div class="footer-text">
-                Mewujudkan ekosistem keuangan negara yang bersih dan dapat dipertanggungjawabkan melalui pemanfaatan solusi teknologi mutakhir yang aman, andal, serta tepercaya.
+            Mewujudkan ekosistem keuangan publik yang lebih transparan,
+        akuntabel, aman, andal, dan tetap menjaga privasi warga melalui
+        pemanfaatan teknologi digital terdistribusi.
             </div>
             <div class="footer-bottom">
-    <span id="waktu-sekarang"></span> IDR Chain Initiative.<br>Hak Cipta Dilindungi Undang-Undang.<br>
-    <span style="color: #475569; font-size: 0.8rem; display: block; margin-top: 0.6rem;">Dokumen ini merupakan publikasi konsep teknis akademis awal dan bersifat non-resmi untuk kepentingan simulasi cetak biru infrastruktur nasional.</span>
+    <span id="waktu-sekarang"></span> IDR Chain Initiative.<br>Seluruh hak cipta dilindungi.<br>
+    <span style="color: #475569; font-size: 0.8rem; display: block; margin-top: 0.6rem;">Dokumen ini merupakan draf teknis konseptual yang bersifat independen
+dan non-resmi, disusun untuk kepentingan riset, edukasi, serta
+pengembangan gagasan infrastruktur audit digital nasional.</span>
             </div>
         </div>
   </footer>

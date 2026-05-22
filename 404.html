@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>404 Halaman Tidak Ditemukan | IDR Chain</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        :root {
+            --primary: #0f172a;       /* Deep Slate / Navy */
+            --secondary: #3b82f6;     /* Vibrant Blue */
+            --bg-dark: #090d16;       /* Ultra Dark Slate untuk latar belakang 404 */
+            --text-light: #f8fafc;
+            --text-muted: #94a3b8;
+            --border-color: rgba(255, 255, 255, 0.08);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-dark);
+            color: var(--text-light);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            align-items: center;
+            overflow-x: hidden;
+            padding: 2rem;
+            position: relative;
+        }
+
+        /* --- Ambient Nebula Background (Diredam & Formal) --- */
+        .ambient-bg {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(59, 130, 246, 0.15) 0%, rgba(139, 92, 246, 0.08) 40%, transparent 70%);
+            filter: blur(60px);
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        /* --- Header / Logo Area --- */
+        header {
+            width: 100%;
+            max-width: 1200px;
+            display: flex;
+            justify-content: center;
+            z-index: 10;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #ffffff;
+            letter-spacing: -0.5px;
+            text-decoration: none;
+        }
+
+        .logo span {
+            color: var(--secondary);
+        }
+
+        /* --- Main Content Card --- */
+        .error-container {
+            max-width: 580px;
+            text-align: center;
+            z-index: 10;
+            padding: 2rem;
+        }
+
+        /* Animasi Masuk yang Sangat Soft */
+        .reveal {
+            opacity: 0;
+            transform: translateY(25px);
+            animation: softReveal 1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        }
+
+        @keyframes softReveal {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .error-code {
+            font-size: 7.5rem;
+            font-weight: 700;
+            line-height: 1;
+            background: linear-gradient(135deg, #ffffff 30%, #64748b 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            letter-spacing: -4px;
+            margin-bottom: 1rem;
+            position: relative;
+            display: inline-block;
+        }
+
+        .error-divider {
+            width: 40px;
+            height: 3px;
+            background: var(--secondary);
+            margin: 1.5rem auto;
+            border-radius: 2px;
+            box-shadow: 0 0 10px rgba(59, 130, 246, 0.6);
+        }
+
+        h1 {
+            font-size: 1.75rem;
+            font-weight: 600;
+            color: #ffffff;
+            margin-bottom: 1rem;
+            letter-spacing: -0.5px;
+        }
+
+        p {
+            font-size: 1rem;
+            color: var(--text-muted);
+            line-height: 1.7;
+            margin-bottom: 3rem;
+            font-weight: 300;
+        }
+
+        /* --- Action Buttons --- */
+        .button-group {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .btn {
+            padding: 0.85rem 1.8rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-size: 0.95rem;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .btn i {
+            font-size: 0.9rem;
+            transition: transform 0.3s ease;
+        }
+
+        .btn-primary {
+            background-color: var(--secondary);
+            color: #ffffff;
+            box-shadow: 0 4px 14px rgba(59, 130, 246, 0.25);
+        }
+
+        .btn-primary:hover {
+            background-color: #2563eb;
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(59, 130, 246, 0.4);
+        }
+
+        .btn-primary:hover i {
+            transform: translateX(-4px); /* Efek panah mundur sedikit halus */
+        }
+
+        .btn-outline {
+            background-color: transparent;
+            color: #ffffff;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+        }
+
+        .btn-outline:hover {
+            background-color: rgba(255, 255, 255, 0.05);
+            border-color: rgba(255, 255, 255, 0.35);
+            transform: translateY(-3px);
+        }
+
+        /* --- Footer / Kepatuhan --- */
+        footer {
+            width: 100%;
+            text-align: center;
+            z-index: 10;
+            font-size: 0.85rem;
+            color: #475569;
+        }
+
+        /* --- Responsive Mode Mobile --- */
+        @media (max-width: 768px) {
+            body {
+                padding: 1.5rem;
+            }
+
+            .error-code {
+                font-size: 5.5rem;
+                letter-spacing: -2px;
+            }
+
+            h1 {
+                font-size: 1.4rem;
+            }
+
+            p {
+                font-size: 0.95rem;
+                margin-bottom: 2.5rem;
+            }
+
+            .button-group {
+                flex-direction: column;
+                width: 100%;
+                gap: 0.8rem;
+            }
+
+            .btn {
+                width: 100%;
+                justify-content: center;
+                padding: 0.8rem 1.5rem;
+            }
+
+            .ambient-bg {
+                width: 300px;
+                height: 300px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="ambient-bg"></div>
+
+    <header class="reveal">
+        <a href="Landing_Page_IDR_Chain.html" class="logo">IDR<span>Chain</span></a>
+    </header>
+
+    <main class="error-container reveal" style="animation-delay: 150ms;">
+        <div class="error-code">404</div>
+        <h1>Halaman Tidak Ditemukan</h1>
+        <div class="error-divider"></div>
+        <p>Maaf, tautan infrastruktur jaringan yang Anda tuju salah, telah dihapus, atau sedang dalam masa pemeliharaan sistem enkripsi berkala. Pastikan kembali alamat URL sudah benar.</p>
+        
+        <div class="button-group">
+            <a href="Landing_Page_IDR_Chain.html" class="btn btn-primary">
+                <i class="fas fa-arrow-left"></i> Kembali ke Beranda
+            </a>
+            <a href="IDR_Chain_Whitepaper.pdf" target="_blank" class="btn btn-outline">
+                <i class="fas fa-file-pdf"></i> Buka Whitepaper
+            </a>
+        </div>
+    </main>
+
+    <footer class="reveal" style="animation-delay: 300ms;">
+        IDR Chain Jaringan Ledger Terdistribusi Nasional &copy; 2026. Seluruh Hak Cipta Dilindungi.
+    </footer>
+
+</body>
+</html>

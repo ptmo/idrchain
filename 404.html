@@ -260,7 +260,7 @@
             </div>
 
             <button class="theme-btn" id="theme-toggle" aria-label="Ganti Tema">
-                <i class="fas fa-sun"></i> </button>
+                <i class="fas fa-moon"></i> </button>
         </div>
     </header>
 
@@ -335,13 +335,13 @@
         function setTheme(isLight) {
             if (isLight) {
                 document.body.classList.add('light-theme');
-                themeIcon.classList.remove('fa-sun');
-                themeIcon.classList.add('fa-moon');
+                themeIcon.classList.remove('fa-moon');
+                themeIcon.classList.add('fa-sun');
                 localStorage.setItem('theme', 'light');
             } else {
                 document.body.classList.remove('light-theme');
-                themeIcon.classList.remove('fa-moon');
-                themeIcon.classList.add('fa-sun');
+                themeIcon.classList.remove('fa-sun');
+                themeIcon.classList.add('fa-moon');
                 localStorage.setItem('theme', 'dark');
             }
         }

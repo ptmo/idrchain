@@ -171,15 +171,15 @@
         .lang-option:hover { background: var(--dropdown-hover); color: var(--secondary); }
 
         /* --- Header & Main Content --- */
-        header {
-            width: 100%;
-            max-width: 1200px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            position: relative; 
-            z-index: 10;
-        }
+header {
+    width: 100%;
+    max-width: 1200px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative; 
+    z-index: 999; /* Diubah dari 10 menjadi 999 agar dropdown selalu di atas */
+}
 
         .logo { font-size: 1.5rem; font-weight: 700; color: var(--text-light); letter-spacing: -0.5px; text-decoration: none; transition: color 0.4s ease;}
         .logo span { color: var(--secondary); }

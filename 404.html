@@ -117,7 +117,7 @@
         h1 {
             font-size: 1.75rem;
             font-weight: 600;
-            color: #FF9999;
+            color: #FF3333;
             margin-bottom: 1rem;
             letter-spacing: -0.5px;
         }
@@ -273,8 +273,41 @@
     </main>
 
     <footer class="reveal" style="animation-delay: 300ms;">
-        IDR Chain Jaringan Ledger Terdistribusi Nasional &copy; 2026. Seluruh Hak Cipta Dilindungi.
+    IDR Chain Jaringan Ledger Terdistribusi Nasional &copy; <span id="waktu-realtime"></span>. Seluruh Hak Cipta Dilindungi.
     </footer>
+<script>
+    function updateWaktuFooter() {
+        const waktu = new Date();
+        
+        // Array nama hari dan bulan
+        const daftarHari = ['Minggu', 'Senin', 'Selasa', 'Rabu', 'Kamis', 'Jumat', 'Sabtu'];
+        const daftarBulan = ['Januari', 'Februari', 'Maret', 'April', 'Mei', 'Juni', 'Juli', 'Agustus', 'September', 'Oktober', 'November', 'Desember'];
+        
+        const namaHari = daftarHari[waktu.getDay()];
+        const tanggal = waktu.getDate();
+        const namaBulan = daftarBulan[waktu.getMonth()];
+        const tahun = waktu.getFullYear();
+        
+        // Memastikan jam, menit, dan detik selalu 2 digit (contoh: 09:05:03)
+        const jam = String(waktu.getHours()).padStart(2, '0');
+        const menit = String(waktu.getMinutes()).padStart(2, '0');
+        const detik = String(waktu.getSeconds()).padStart(2, '0');
+        
+        // Menyusun format: Hari Tanggal(Bulan) Jam:Menit:Detik Tahun
+        const formatTeks = `${namaHari} ${tanggal} ${namaBulan} ${jam}:${menit}:${detik} ${tahun}`;
+        
+        // Memasukkan teks ke dalam span
+        const elemenSpan = document.getElementById('waktu-realtime');
+        if (elemenSpan) {
+            elemenSpan.innerHTML = formatTeks;
+        }
+    }
 
+    // Jalankan fungsi pertama kali
+    updateWaktuFooter();
+    
+    // Perbarui setiap 1000 milidetik (1 detik)
+    setInterval(updateWaktuFooter, 1000);
+</script>
 </body>
 </html>

@@ -12,12 +12,11 @@
 
     <style>
         :root {
-            --primary: #0f172a;       /* Deep Slate / Navy */
-            --secondary: #3b82f6;     /* Vibrant Blue */
-            --bg-dark: #090d16;       /* Ultra Dark Slate untuk latar belakang 404 */
+            --primary: #0f172a;
+            --secondary: #3b82f6;
+            --bg-dark: #090d16;
             --text-light: #f8fafc;
             --text-muted: #94a3b8;
-            --border-color: rgba(255, 255, 255, 0.08);
         }
 
         * {
@@ -27,20 +26,19 @@
             font-family: 'Inter', sans-serif;
         }
 
+        /* Perbaikan Layout Body agar tidak terlalu berjauhan */
         body {
             background-color: var(--bg-dark);
             color: var(--text-light);
             min-height: 100vh;
             display: flex;
             flex-direction: column;
-            justify-content: space-between;
             align-items: center;
             overflow-x: hidden;
-            padding: 2rem;
+            padding: 2.5rem 2rem;
             position: relative;
         }
 
-        /* --- Ambient Nebula Background (Diredam & Formal) --- */
         .ambient-bg {
             position: absolute;
             top: 50%;
@@ -54,13 +52,13 @@
             pointer-events: none;
         }
 
-        /* --- Header / Logo Area --- */
         header {
             width: 100%;
             max-width: 1200px;
             display: flex;
             justify-content: center;
             z-index: 10;
+            margin-bottom: auto; /* Mendorong konten di bawahnya ke tengah secara proporsional */
         }
 
         .logo {
@@ -80,10 +78,10 @@
             max-width: 580px;
             text-align: center;
             z-index: 10;
-            padding: 2rem;
+            margin: auto 0; /* Menjaga konten tetap di tengah layar */
+            padding: 2rem 0;
         }
 
-        /* Animasi Masuk yang Sangat Soft */
         .reveal {
             opacity: 0;
             transform: translateY(25px);
@@ -91,10 +89,7 @@
         }
 
         @keyframes softReveal {
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+            to { opacity: 1; transform: translateY(0); }
         }
 
         .error-code {
@@ -106,7 +101,6 @@
             -webkit-text-fill-color: transparent;
             letter-spacing: -4px;
             margin-bottom: 1rem;
-            position: relative;
             display: inline-block;
         }
 
@@ -131,8 +125,54 @@
             font-size: 1rem;
             color: var(--text-muted);
             line-height: 1.7;
-            margin-bottom: 3rem;
+            margin-bottom: 2.5rem;
             font-weight: 300;
+        }
+
+        /* --- Container Ikon Radar yang Diperbesar & Ditengahkan --- */
+        .radar-icon-wrapper {
+            position: relative;
+            width: 85px;  /* Diperbesar dari 54px */
+            height: 85px; /* Diperbesar dari 54px */
+            background-color: #eff6ff; 
+            border-radius: 20px; /* Sudut disesuaikan agar proporsional */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 1.5rem auto 1.5rem auto; /* Ini yang membuat posisinya pas di tengah */
+            z-index: 1;
+        }
+
+        /* Penyesuaian gambar PNG di dalam radar */
+        .radar-icon-wrapper img {
+            width: 45px; /* Atur ukuran gambar PNG Anda di sini */
+            height: 45px;
+            object-fit: contain;
+        }
+
+        /* Efek Gelombang Radar Tetap Sama */
+        .radar-icon-wrapper::before,
+        .radar-icon-wrapper::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border-radius: 20px;
+            background-color: rgba(59, 130, 246, 0.3);
+            z-index: -1;
+            pointer-events: none;
+            animation: googleRadarPulse 2.5s cubic-bezier(0.25, 0, 0, 1) infinite;
+        }
+
+        .radar-icon-wrapper::after {
+            animation-delay: 1.25s;
+        }
+
+        @keyframes googleRadarPulse {
+            0% { transform: scale(1); opacity: 1; }
+            100% { transform: scale(2.4); opacity: 0; }
         }
 
         /* --- Action Buttons --- */
@@ -155,11 +195,6 @@
             transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
         }
 
-        .btn i {
-            font-size: 0.9rem;
-            transition: transform 0.3s ease;
-        }
-
         .btn-primary {
             background-color: var(--secondary);
             color: #ffffff;
@@ -170,10 +205,6 @@
             background-color: #2563eb;
             transform: translateY(-3px);
             box-shadow: 0 6px 20px rgba(59, 130, 246, 0.4);
-        }
-
-        .btn-primary:hover i {
-            transform: translateX(-4px); /* Efek panah mundur sedikit halus */
         }
 
         .btn-outline {
@@ -188,100 +219,25 @@
             transform: translateY(-3px);
         }
 
-        /* --- Footer / Kepatuhan --- */
         footer {
             width: 100%;
             text-align: center;
             z-index: 10;
             font-size: 0.85rem;
             color: #475569;
+            margin-top: auto; /* Menahan footer agar tetap di bawah */
         }
 
         /* --- Responsive Mode Mobile --- */
         @media (max-width: 768px) {
-            body {
-                padding: 1.5rem;
-            }
-
-            .error-code {
-                font-size: 5.5rem;
-                letter-spacing: -2px;
-            }
-
-            h1 {
-                font-size: 1.4rem;
-            }
-
-            p {
-                font-size: 0.95rem;
-                margin-bottom: 2.5rem;
-            }
-
-            .button-group {
-                flex-direction: column;
-                width: 100%;
-                gap: 0.8rem;
-            }
-
-            .btn {
-                width: 100%;
-                justify-content: center;
-                padding: 0.8rem 1.5rem;
-            }
-
-            .ambient-bg {
-                width: 300px;
-                height: 300px;
-            }
+            body { padding: 1.5rem; }
+            .error-code { font-size: 5.5rem; letter-spacing: -2px; }
+            h1 { font-size: 1.4rem; }
+            p { font-size: 0.95rem; margin-bottom: 2.5rem; }
+            .button-group { flex-direction: column; width: 100%; gap: 0.8rem; }
+            .btn { width: 100%; justify-content: center; padding: 0.8rem 1.5rem; }
+            .ambient-bg { width: 300px; height: 300px; }
         }
-
-        /* --- Container Ikon dengan Efek Radar ala Google --- */
-.radar-icon-wrapper {
-    position: relative;
-    width: 54px;
-    height: 54px;
-    background-color: #eff6ff; /* Warna dasar bg ikon */
-    color: var(--secondary);    /* Warna ikon biru */
-    border-radius: 14px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 1.4rem;
-    z-index: 1;
-}
-
-/* Gelombang Radar Lapisan 1 */
-.radar-icon-wrapper::before,
-.radar-icon-wrapper::after {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    border-radius: 14px;
-    background-color: rgba(59, 130, 246, 0.3); /* Pendaran gelombang biru */
-    z-index: -1;
-    pointer-events: none;
-    animation: googleRadarPulse 2.5s cubic-bezier(0.25, 0, 0, 1) infinite;
-}
-
-/* Gelombang Radar Lapisan 2 (Jeda Waktu) */
-.radar-icon-wrapper::after {
-    animation-delay: 1.25s;
-}
-
-/* Animasi Membesar dan Menghilang Halus */
-@keyframes googleRadarPulse {
-    0% {
-        transform: scale(1);
-        opacity: 1;
-    }
-    100% {
-        transform: scale(2.4);
-        opacity: 0;
-    }
-}
     </style>
 </head>
 <body>
@@ -296,9 +252,11 @@
         <div class="error-code">404</div>
         <h1>Halaman Tidak Ditemukan</h1>
         <div class="error-divider"></div>
+        
         <div class="radar-icon-wrapper">
-    <i class="fas fa-tower-broadcast"></i>
+            <img src="img/radar.png" alt="Radar Ikon">
         </div>
+
         <p>Maaf, tautan infrastruktur jaringan yang Anda tuju salah, telah dihapus, atau sedang dalam masa pemeliharaan sistem enkripsi berkala. Pastikan kembali alamat URL sudah benar.</p>
         
         <div class="button-group">

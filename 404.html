@@ -26,7 +26,7 @@
             font-family: 'Inter', sans-serif;
         }
 
-        /* Perbaikan Layout Body agar tidak terlalu berjauhan */
+        /* --- PERBAIKAN LAYOUT --- */
         body {
             background-color: var(--bg-dark);
             color: var(--text-light);
@@ -34,6 +34,8 @@
             display: flex;
             flex-direction: column;
             align-items: center;
+            justify-content: center; /* Mengelompokkan semua konten di tengah vertikal */
+            gap: 4rem; /* Memberikan jarak pasti 4rem antara Header, Main, dan Footer */
             overflow-x: hidden;
             padding: 2.5rem 2rem;
             position: relative;
@@ -58,7 +60,7 @@
             display: flex;
             justify-content: center;
             z-index: 10;
-            margin-bottom: auto; /* Mendorong konten di bawahnya ke tengah secara proporsional */
+            /* margin-bottom: auto dihapus agar tidak saling menjauh */
         }
 
         .logo {
@@ -78,8 +80,7 @@
             max-width: 580px;
             text-align: center;
             z-index: 10;
-            margin: auto 0; /* Menjaga konten tetap di tengah layar */
-            padding: 2rem 0;
+            /* margin: auto 0 dihapus agar terikat oleh properti gap pada body */
         }
 
         .reveal {
@@ -129,28 +130,26 @@
             font-weight: 300;
         }
 
-        /* --- Container Ikon Radar yang Diperbesar & Ditengahkan --- */
+        /* --- Container Ikon Radar --- */
         .radar-icon-wrapper {
             position: relative;
-            width: 85px;  /* Diperbesar dari 54px */
-            height: 85px; /* Diperbesar dari 54px */
+            width: 85px;
+            height: 85px; 
             background-color: #eff6ff; 
-            border-radius: 20px; /* Sudut disesuaikan agar proporsional */
+            border-radius: 20px; 
             display: flex;
             align-items: center;
             justify-content: center;
-            margin: 1.5rem auto 1.5rem auto; /* Ini yang membuat posisinya pas di tengah */
+            margin: 1.5rem auto 1.5rem auto; 
             z-index: 1;
         }
 
-        /* Penyesuaian gambar PNG di dalam radar */
         .radar-icon-wrapper img {
-            width: 45px; /* Atur ukuran gambar PNG Anda di sini */
+            width: 45px; 
             height: 45px;
             object-fit: contain;
         }
 
-        /* Efek Gelombang Radar Tetap Sama */
         .radar-icon-wrapper::before,
         .radar-icon-wrapper::after {
             content: '';
@@ -225,12 +224,16 @@
             z-index: 10;
             font-size: 0.85rem;
             color: #475569;
-            margin-top: auto; /* Menahan footer agar tetap di bawah */
+            /* margin-top: auto dihapus */
         }
 
         /* --- Responsive Mode Mobile --- */
         @media (max-width: 768px) {
-            body { padding: 1.5rem; }
+            body { 
+                padding: 1.5rem; 
+                justify-content: flex-start; /* Untuk layar kecil biarkan konten mengalir ke bawah */
+                gap: 2rem;
+            }
             .error-code { font-size: 5.5rem; letter-spacing: -2px; }
             h1 { font-size: 1.4rem; }
             p { font-size: 0.95rem; margin-bottom: 2.5rem; }

@@ -12,7 +12,6 @@
 
     <style>
         :root {
-            /* --- TEMA DARK (DEFAULT) --- */
             --primary: #0f172a;
             --secondary: #3b82f6;
             --bg-dark: #090d16;
@@ -28,7 +27,6 @@
             --time-color: #cbd5e1;
         }
 
-        /* --- TEMA LIGHT --- */
         body.light-theme {
             --primary: #0f172a;
             --secondary: #2563eb;
@@ -80,7 +78,6 @@
             pointer-events: none;
         }
 
-        /* --- KONTROL BAHASA & TEMA (POJOK KANAN ATAS) --- */
         .top-right-controls {
             position: absolute;
             right: 0; 
@@ -89,7 +86,7 @@
             z-index: 100;
             display: flex;
             align-items: center;
-            gap: 12px; /* Jarak antara tombol bahasa dan tema */
+            gap: 12px;
         }
 
         .lang-switcher {
@@ -97,7 +94,6 @@
             display: inline-block;
         }
 
-        /* Gaya Umum Tombol Kontrol (Bahasa & Tema) */
         .lang-btn, .theme-btn {
             width: 35px;
             height: 35px;
@@ -170,7 +166,7 @@
 
         .lang-option:hover { background: var(--dropdown-hover); color: var(--secondary); }
 
-        /* --- Header & Main Content --- */
+
 header {
     width: 100%;
     max-width: 1200px;
@@ -178,7 +174,7 @@ header {
     justify-content: center;
     align-items: center;
     position: relative; 
-    z-index: 999; /* Diubah dari 10 menjadi 999 agar dropdown selalu di atas */
+    z-index: 999;
 }
 
         .logo { font-size: 1.5rem; font-weight: 700; color: var(--text-light); letter-spacing: -0.5px; text-decoration: none; transition: color 0.4s ease;}
@@ -198,14 +194,12 @@ header {
         h1 { font-size: 1.75rem; font-weight: 600; color: #ff3333; margin-bottom: 1rem; letter-spacing: -0.5px; }
         p { font-size: 1rem; color: var(--text-muted); line-height: 1.7; margin-bottom: 2.5rem; font-weight: 500; transition: color 0.4s ease;}
 
-        /* --- Container Ikon Radar --- */
         .radar-icon-wrapper { position: relative; width: 85px; height: 85px; background-color: var(--radar-bg); border-radius: 20px; display: flex; align-items: center; justify-content: center; margin: 1.5rem auto 1.5rem auto; z-index: 1; transition: background-color 0.4s ease;}
         .radar-icon-wrapper img { width: 45px; height: 45px; object-fit: contain; }
         .radar-icon-wrapper::before, .radar-icon-wrapper::after { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%; border-radius: 20px; background-color: rgba(59, 130, 246, 0.3); z-index: -1; pointer-events: none; animation: googleRadarPulse 2.5s cubic-bezier(0.25, 0, 0, 1) infinite; }
         .radar-icon-wrapper::after { animation-delay: 1.25s; }
         @keyframes googleRadarPulse { 0% { transform: scale(1); opacity: 1; } 100% { transform: scale(2.4); opacity: 0; } }
 
-        /* --- Action Buttons --- */
         .button-group { display: flex; gap: 1rem; justify-content: center; align-items: center; }
         .btn { padding: 0.85rem 1.8rem; border-radius: 8px; text-decoration: none; font-size: 0.95rem; font-weight: 600; display: flex; align-items: center; gap: 10px; transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1); }
         .btn-primary { background-color: var(--secondary); color: #ffffff; box-shadow: 0 4px 14px rgba(59, 130, 246, 0.25); }
@@ -213,10 +207,8 @@ header {
         .btn-outline { background-color: transparent; color: var(--text-light); border: 1px solid var(--border-color); }
         .btn-outline:hover { background-color: var(--dropdown-hover); border-color: var(--secondary); color: var(--text-light); transform: translateY(-3px); }
 
-        /* --- Footer --- */
         footer { width: 100%; text-align: center; z-index: 10; font-size: 0.85rem; color: var(--text-muted); line-height: 1.6; transition: color 0.4s ease;}
 
-        /* --- Responsive Mode Mobile --- */
         @media (max-width: 768px) {
             body { padding: 1.5rem; justify-content: flex-start; gap: 2rem; }
             .top-right-controls { position: relative; top: 0; right: 0; transform: none; justify-content: flex-end; width: 100%; margin-bottom: 1rem; }
@@ -292,7 +284,6 @@ header {
     </footer>
 
     <script>
-        // 1. Kamus Multi-Bahasa
         const i18nData = {
             id: {
                 title_404: "Halaman Tidak Ditemukan",
@@ -328,7 +319,6 @@ header {
             }
         };
 
-        // 2. Logika Toggle Tema (Dark/Light Mode)
         const themeToggle = document.getElementById('theme-toggle');
         const themeIcon = themeToggle.querySelector('i');
 
@@ -351,7 +341,6 @@ header {
             setTheme(isLight);
         });
 
-        // 3. Logika Dropdown Custom Bahasa
         const langToggle = document.getElementById('lang-toggle');
         const langMenu = document.getElementById('lang-menu');
         const currentFlag = document.getElementById('current-flag');
@@ -367,7 +356,6 @@ header {
             }
         });
 
-        // 4. Fungsi Terjemahan
         function changeLang(langCode, flagUrl) {
             currentFlag.src = flagUrl;
             currentFlag.alt = langCode.toUpperCase();
@@ -386,23 +374,18 @@ header {
             updateWaktuFooter();
         }
 
-        // 5. Muat Preferensi Tersimpan (Tema & Bahasa) Saat Halaman Dimuat
         window.onload = () => {
-            // Muat Bahasa
             const savedLang = localStorage.getItem('selectedLang') || 'id';
             const savedFlag = localStorage.getItem('selectedFlag') || 'img/id.svg';
             changeLang(savedLang, savedFlag);
-
-            // Muat Tema
             const savedTheme = localStorage.getItem('theme');
             if (savedTheme === 'light') {
                 setTheme(true);
             } else {
-                setTheme(false); // Default adalah dark mode
+                setTheme(false);
             }
         };
 
-        // 6. Fungsi Jam Real-Time Multi-Bahasa
         function updateWaktuFooter() {
             const waktu = new Date();
             const langCode = localStorage.getItem('selectedLang') || 'id';
@@ -435,7 +418,7 @@ header {
             const elemenSpan = document.getElementById('waktu-realtime');
             if (elemenSpan) {
                 elemenSpan.innerHTML = formatTeks;
-                elemenSpan.style.color = "var(--time-color)"; // Memastikan warna jam ikut berubah
+                elemenSpan.style.color = "var(--time-color)";
             }
         }
 

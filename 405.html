@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>404 Halaman Tidak Ditemukan | IDR Chain</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        :root {
+            --primary: #0f172a;
+            --secondary: #3b82f6;
+            --bg-dark: #090d16;
+            --text-light: #f8fafc;
+            --text-muted: #94a3b8;
+            --white: #ffffff;
+            --border-color: rgba(255, 255, 255, 0.1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-dark);
+            color: var(--text-light);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 4rem;
+            overflow-x: hidden;
+            padding: 2.5rem 2rem;
+            position: relative;
+        }
+
+        .ambient-bg {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(59, 130, 246, 0.15) 0%, rgba(139, 92, 246, 0.08) 40%, transparent 70%);
+            filter: blur(60px);
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        /* --- KONTROL BAHASA POJOK KANAN ATAS --- */
+        .top-right-controls {
+            position: absolute;
+            top: 2.5rem;
+            right: 2.5rem;
+            z-index: 100;
+        }
+
+        .lang-switcher {
+            position: relative;
+            display: inline-block;
+        }
+
+        .lang-btn {
+            width: 42px;
+            height: 42px;
+            border-radius: 50%;
+            border: 2px solid var(--border-color);
+            background: rgba(255, 255, 255, 0.05);
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            padding: 0;
+            transition: border-color 0.3s;
+        }
+
+        .lang-btn:hover { border-color: var(--secondary); }
+        .lang-btn img { width: 100%; height: 100%; object-fit: cover; }
+
+        .lang-dropdown {
+            position: absolute;
+            right: 0;
+            top: 55px;
+            background: rgba(15, 23, 42, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 12px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+            border: 1px solid var(--border-color);
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+            min-width: 150px;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(-10px);
+            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+            z-index: 101;
+        }
+
+        .lang-dropdown.show {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        .lang-option {
+            padding: 12px 16px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            cursor: pointer;
+            transition: background 0.2s;
+            font-size: 0.9rem;
+            font-weight: 500;
+            color: var(--text-light);
+        }
+
+        .lang-option img {
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .lang-option:hover { background: rgba(255, 255, 255, 0.1); color: var(--secondary); }
+
+        /* --- Header & Main Content --- */
+        header {
+            width: 100%;
+            max-width: 1200px;
+            display: flex;
+            justify-content: center;
+            z-index: 10;
+        }
+
+        .logo { font-size: 1.5rem; font-weight: 700; color: #ffffff; letter-spacing: -0.5px; text-decoration: none; }
+        .logo span { color: var(--secondary); }
+
+        .error-container {
+            max-width: 580px;
+            text-align: center;
+            z-index: 10;
+        }
+
+        .reveal { opacity: 0; transform: translateY(25px); animation: softReveal 1s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
+        @keyframes softReveal { to { opacity: 1; transform: translateY(0); } }
+
+        .error-code { font-size: 7.5rem; font-weight: 700; line-height: 1; background: linear-gradient(135deg, #ffffff 30%, #64748b 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; letter-spacing: -4px; margin-bottom: 1rem; display: inline-block; }
+        .error-divider { width: 40px; height: 3px; background: var(--secondary); margin: 1.5rem auto; border-radius: 2px; box-shadow: 0 0 10px rgba(59, 130, 246, 0.6); }
+        h1 { font-size: 1.75rem; font-weight: 600; color: #ff3333; margin-bottom: 1rem; letter-spacing: -0.5px; }
+        p { font-size: 1rem; color: var(--text-muted); line-height: 1.7; margin-bottom: 2.5rem; font-weight: 500; }
+
+        /* --- Container Ikon Radar --- */
+        .radar-icon-wrapper { position: relative; width: 85px; height: 85px; background-color: #eff6ff; border-radius: 20px; display: flex; align-items: center; justify-content: center; margin: 1.5rem auto 1.5rem auto; z-index: 1; }
+        .radar-icon-wrapper img { width: 45px; height: 45px; object-fit: contain; }
+        .radar-icon-wrapper::before, .radar-icon-wrapper::after { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%; border-radius: 20px; background-color: rgba(59, 130, 246, 0.3); z-index: -1; pointer-events: none; animation: googleRadarPulse 2.5s cubic-bezier(0.25, 0, 0, 1) infinite; }
+        .radar-icon-wrapper::after { animation-delay: 1.25s; }
+        @keyframes googleRadarPulse { 0% { transform: scale(1); opacity: 1; } 100% { transform: scale(2.4); opacity: 0; } }
+
+        /* --- Action Buttons --- */
+        .button-group { display: flex; gap: 1rem; justify-content: center; align-items: center; }
+        .btn { padding: 0.85rem 1.8rem; border-radius: 8px; text-decoration: none; font-size: 0.95rem; font-weight: 600; display: flex; align-items: center; gap: 10px; transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1); }
+        .btn-primary { background-color: var(--secondary); color: #ffffff; box-shadow: 0 4px 14px rgba(59, 130, 246, 0.25); }
+        .btn-primary:hover { background-color: #2563eb; transform: translateY(-3px); box-shadow: 0 6px 20px rgba(59, 130, 246, 0.4); }
+        .btn-outline { background-color: transparent; color: #ffffff; border: 1px solid rgba(255, 255, 255, 0.15); }
+        .btn-outline:hover { background-color: rgba(255, 255, 255, 0.05); border-color: rgba(255, 255, 255, 0.35); transform: translateY(-3px); }
+
+        /* --- Footer --- */
+        footer { width: 100%; text-align: center; z-index: 10; font-size: 0.85rem; color: #64748b; line-height: 1.6;}
+
+        /* --- Responsive Mode Mobile --- */
+        @media (max-width: 768px) {
+            body { padding: 1.5rem; justify-content: flex-start; gap: 2rem; }
+            .top-right-controls { top: 1.5rem; right: 1.5rem; }
+            .error-code { font-size: 5.5rem; letter-spacing: -2px; }
+            h1 { font-size: 1.4rem; }
+            p { font-size: 0.95rem; margin-bottom: 2.5rem; }
+            .button-group { flex-direction: column; width: 100%; gap: 0.8rem; }
+            .btn { width: 100%; justify-content: center; padding: 0.8rem 1.5rem; }
+            .ambient-bg { width: 300px; height: 300px; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="ambient-bg"></div>
+
+    <div class="top-right-controls">
+        <div class="lang-switcher">
+            <button class="lang-btn" id="lang-toggle">
+                <img id="current-flag" src="img/id.svg" alt="ID">
+            </button>
+            <div class="lang-dropdown" id="lang-menu">
+                <div class="lang-option" onclick="changeLang('id', 'img/id.svg')">
+                    <img src="img/id.svg" alt="ID"> Indonesia
+                </div>
+                <div class="lang-option" onclick="changeLang('en', 'img/us.svg')">
+                    <img src="img/us.svg" alt="EN"> English (US)
+                </div>
+                <div class="lang-option" onclick="changeLang('zh', 'img/cn.svg')">
+                    <img src="img/cn.svg" alt="ZH"> 中文 (China)
+                </div>
+                <div class="lang-option" onclick="changeLang('ru', 'img/ru.svg')">
+                    <img src="img/ru.svg" alt="RU"> Русский
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <header class="reveal">
+        <a href="index" class="logo">IDR<span>Chain</span></a>
+    </header>
+
+    <main class="error-container reveal" style="animation-delay: 150ms;">
+        <div class="error-code">404</div>
+        <h1 data-i18n="title_404">Halaman Tidak Ditemukan</h1>
+        <div class="error-divider"></div>
+        
+        <div class="radar-icon-wrapper">
+            <img src="img/radar.svg" alt="Radar Ikon">
+        </div>
+
+        <p data-i18n="desc_404">Maaf, tautan yang Anda tuju tidak tersedia, atau salah. Pastikan alamat URL benar.</p>
+        
+        <div class="button-group">
+            <a href="index" class="btn btn-primary">
+                <i class="fas fa-arrow-left"></i> <span data-i18n="btn_home">Kembali ke Beranda</span>
+            </a>
+            <a href="IDR_Chain_Whitepaper.pdf" target="_blank" class="btn btn-outline">
+                <i class="fas fa-file-pdf"></i> <span data-i18n="btn_doc">Buka Whitepaper</span>
+            </a>
+        </div>
+    </main>
+
+    <footer class="reveal" style="animation-delay: 300ms;">
+        <span data-i18n="foot_1">IDR Chain Jaringan Ledger Terdistribusi Nasional &copy; </span>
+        <span id="waktu-realtime" style="color: #cbd5e1; font-weight: 500;"></span>
+        <span data-i18n="foot_2">. Seluruh Hak Cipta Dilindungi.</span>
+    </footer>
+
+    <script>
+        // 1. Kamus Multi-Bahasa
+        const i18nData = {
+            id: {
+                title_404: "Halaman Tidak Ditemukan",
+                desc_404: "Maaf, tautan yang Anda tuju tidak tersedia, atau salah. Pastikan alamat URL benar.",
+                btn_home: "Kembali ke Beranda",
+                btn_doc: "Buka Whitepaper",
+                foot_1: "IDR Chain Jaringan Ledger Terdistribusi Nasional &copy; ",
+                foot_2: ". Seluruh Hak Cipta Dilindungi."
+            },
+            en: {
+                title_404: "Page Not Found",
+                desc_404: "Sorry, the link you are trying to reach is unavailable or incorrect. Please ensure the URL is correct.",
+                btn_home: "Back to Home",
+                btn_doc: "Open Whitepaper",
+                foot_1: "IDR Chain National Distributed Ledger Network &copy; ",
+                foot_2: ". All Rights Reserved."
+            },
+            zh: {
+                title_404: "页面未找到",
+                desc_404: "抱歉，您访问的链接不可用或不正确。请确保 URL 正确。",
+                btn_home: "返回首页",
+                btn_doc: "打开白皮书",
+                foot_1: "IDR Chain 国家分布式账本网络 &copy; ",
+                foot_2: "。版权所有。"
+            },
+            ru: {
+                title_404: "Страница не найдена",
+                desc_404: "К сожалению, ссылка, по которой вы перешли, недоступна или неверна. Убедитесь, что URL-адрес правильный.",
+                btn_home: "Вернуться на главную",
+                btn_doc: "Открыть Whitepaper",
+                foot_1: "Национальная сеть распределенного реестра IDR Chain &copy; ",
+                foot_2: ". Все права защищены."
+            }
+        };
+
+        // 2. Logika Dropdown Custom
+        const langToggle = document.getElementById('lang-toggle');
+        const langMenu = document.getElementById('lang-menu');
+        const currentFlag = document.getElementById('current-flag');
+
+        langToggle.addEventListener('click', (e) => {
+            e.stopPropagation();
+            langMenu.classList.toggle('show');
+        });
+
+        document.addEventListener('click', (e) => {
+            if (!langToggle.contains(e.target) && !langMenu.contains(e.target)) {
+                langMenu.classList.remove('show');
+            }
+        });
+
+        // 3. Fungsi Terjemahan
+        function changeLang(langCode, flagUrl) {
+            currentFlag.src = flagUrl;
+            currentFlag.alt = langCode.toUpperCase();
+            
+            localStorage.setItem('selectedLang', langCode);
+            localStorage.setItem('selectedFlag', flagUrl);
+
+            document.querySelectorAll('[data-i18n]').forEach(element => {
+                const key = element.getAttribute('data-i18n');
+                if (i18nData[langCode] && i18nData[langCode][key]) {
+                    element.innerHTML = i18nData[langCode][key];
+                }
+            });
+
+            langMenu.classList.remove('show');
+            updateWaktuFooter(); // Update bahasa jam seketika saat bahasa diganti
+        }
+
+        // Muat Bahasa Terakhir Saat Dimuat
+        window.onload = () => {
+            const savedLang = localStorage.getItem('selectedLang') || 'id';
+            const savedFlag = localStorage.getItem('selectedFlag') || 'img/id.svg';
+            changeLang(savedLang, savedFlag);
+        };
+
+        // 4. Fungsi Jam Real-Time Multi-Bahasa
+        function updateWaktuFooter() {
+            const waktu = new Date();
+            const langCode = localStorage.getItem('selectedLang') || 'id';
+            
+            const jam = String(waktu.getHours()).padStart(2, '0');
+            const menit = String(waktu.getMinutes()).padStart(2, '0');
+            const detik = String(waktu.getSeconds()).padStart(2, '0');
+            const tanggal = waktu.getDate();
+            const tahun = waktu.getFullYear();
+            
+            let formatTeks;
+
+            if (langCode === 'id') {
+                const daftarHari = ['Minggu', 'Senin', 'Selasa', 'Rabu', 'Kamis', 'Jumat', 'Sabtu'];
+                const daftarBulan = ['Januari', 'Februari', 'Maret', 'April', 'Mei', 'Juni', 'Juli', 'Agustus', 'September', 'Oktober', 'November', 'Desember'];
+                formatTeks = `${daftarHari[waktu.getDay()]} ${tanggal} ${daftarBulan[waktu.getMonth()]} ${jam}:${menit}:${detik} ${tahun}`;
+            } else if (langCode === 'en') {
+                const daftarHari = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+                const daftarBulan = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+                formatTeks = `${daftarHari[waktu.getDay()]}, ${daftarBulan[waktu.getMonth()]} ${tanggal}, ${tahun} ${jam}:${menit}:${detik}`;
+            } else if (langCode === 'zh') {
+                const daftarHari = ['星期日', '星期一', '星期二', '星期三', '星期四', '星期五', '星期六'];
+                formatTeks = `${tahun}年${waktu.getMonth()+1}月${tanggal}日 ${daftarHari[waktu.getDay()]} ${jam}:${menit}:${detik}`;
+            } else if (langCode === 'ru') {
+                const daftarHari = ['Воскресенье', 'Понедельник', 'Вторник', 'Среда', 'Четверг', 'Пятница', 'Суббота'];
+                const daftarBulan = ['Января', 'Февраля', 'Марта', 'Апреля', 'Мая', 'Июня', 'Июля', 'Августа', 'Сентября', 'Октября', 'Ноября', 'Декабря'];
+                formatTeks = `${daftarHari[waktu.getDay()]}, ${tanggal} ${daftarBulan[waktu.getMonth()]} ${tahun} г. ${jam}:${menit}:${detik}`;
+            }
+
+            const elemenSpan = document.getElementById('waktu-realtime');
+            if (elemenSpan) {
+                elemenSpan.innerHTML = formatTeks;
+            }
+        }
+
+        updateWaktuFooter();
+        setInterval(updateWaktuFooter, 1000);
+    </script>
+</body>
+</html>

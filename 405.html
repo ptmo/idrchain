@@ -57,10 +57,11 @@
 
         /* --- KONTROL BAHASA POJOK KANAN ATAS --- */
         .top-right-controls {
-            position: absolute;
-            top: 2.5rem;
-            right: 2.5rem;
-            z-index: 100;
+    position: absolute;
+    right: 0; /* Mengunci posisi di ujung kanan batas max-width header */
+    top: 50%;
+    transform: translateY(-50%); /* Sempurna lurus horizontal di tengah mengikuti logo */
+    z-index: 100;
         }
 
         .lang-switcher {
@@ -89,7 +90,7 @@
         .lang-dropdown {
             position: absolute;
             right: 0;
-            top: 55px;
+            top: 50px;
             background: rgba(15, 23, 42, 0.95);
             backdrop-filter: blur(10px);
             border-radius: 12px;
@@ -136,11 +137,13 @@
 
         /* --- Header & Main Content --- */
         header {
-            width: 100%;
-            max-width: 1200px;
-            display: flex;
-            justify-content: center;
-            z-index: 10;
+    width: 100%;
+    max-width: 1200px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative; /* Menjadi jangkar patokan posisi tombol bahasa */
+    z-index: 10;
         }
 
         .logo { font-size: 1.5rem; font-weight: 700; color: #ffffff; letter-spacing: -0.5px; text-decoration: none; }
@@ -195,6 +198,9 @@
 
     <div class="ambient-bg"></div>
 
+    <header class="reveal">
+    <a href="index" class="logo">IDR<span>Chain</span></a>
+
     <div class="top-right-controls">
         <div class="lang-switcher">
             <button class="lang-btn" id="lang-toggle">
@@ -216,9 +222,6 @@
             </div>
         </div>
     </div>
-
-    <header class="reveal">
-        <a href="index" class="logo">IDR<span>Chain</span></a>
     </header>
 
     <main class="error-container reveal" style="animation-delay: 150ms;">
